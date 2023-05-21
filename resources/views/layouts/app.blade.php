@@ -20,7 +20,6 @@
         href="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.10/css/dataTables.checkboxes.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.1/css/select.dataTables.min.css">
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  
 
   <!-- Scripts -->
   @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -31,18 +30,8 @@
   <script src="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.10/js/dataTables.checkboxes.min.js"></script>
   <script src="https://cdn.datatables.net/select/1.2.1/js/dataTables.select.min.js"></script>
   <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
-  <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>  
-  {{-- <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script> --}}
-  <script src="https://cdn.tailwindcss.com/3.3.0"></script>
-  {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> --}}
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" id="theme-styles" /> --}}
-
-  
-  
-    
-  
+  <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
+  <script type="text/javascript" src="{{url('/build/assets/sweetalert2.all.min.js')}}"></script>
 
   <!-- Styles -->
   <style>
@@ -152,7 +141,6 @@
 <body class="font-sans antialiased">
   <div class="min-h-screen bg-gray-100">
     @livewire('navigation-menu')
-
     <!-- Page Heading -->
     @if (isset($header))
       <header class="bg-white shadow">
