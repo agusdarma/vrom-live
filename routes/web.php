@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DashboardController as AdminDashBoardController;
+use App\Http\Controllers\Admin\BrandController as AdminBrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,14 +17,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('front.index');
 
-Route::middleware([
+Route::prefix('admin')->name('admin.')->middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified'
+    'verified',
+    'isAdmin'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [AdminDashBoardController::class, 'index'])->name('dashboard');
+    Route::resource('brands', AdminBrandController::class);
 });

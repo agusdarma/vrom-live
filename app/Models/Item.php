@@ -26,6 +26,10 @@ class Item extends Model
         'review',
     ];
 
+    protected $casts = [
+        'photos' => 'array',
+    ];
+
     public function brand()
     {
         return $this->belongsTo(Brand::class);
