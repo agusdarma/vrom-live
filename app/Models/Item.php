@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Brand;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * command make model php artisan make:model Item
@@ -25,6 +27,18 @@ class Item extends Model
         'star',
         'review',
     ];
+
+    // Get first photo from photos
+    public function getThumbnailAttribute()
+    {
+        // If photos exist
+        if ($this->photos) {
+            return Storage::url(json_decode($this->photos)[0]);
+        }
+
+        // return 'https://via.placeholder.com/800';
+        return Storage::url('default.png');
+    }
 
     protected $casts = [
         'photos' => 'array',

@@ -14,10 +14,11 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+			    poppins: "Poppins, sans-serif",
             },
         },
     },
 
-    plugins: [forms, typography],
+    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };
