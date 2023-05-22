@@ -23,6 +23,7 @@
 
   <!-- Scripts -->
   @vite(['resources/css/app.css', 'resources/js/app.js'])
+  <script type="text/javascript" src="{{url('/build/assets/sweetalert2.all.min.js')}}"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
@@ -31,7 +32,7 @@
   <script src="https://cdn.datatables.net/select/1.2.1/js/dataTables.select.min.js"></script>
   <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
   <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
-  <script type="text/javascript" src="{{url('/build/assets/sweetalert2.all.min.js')}}"></script>
+  
 
   <!-- Styles -->
   <style>

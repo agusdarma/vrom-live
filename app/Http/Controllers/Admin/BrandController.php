@@ -24,7 +24,7 @@ class BrandController extends Controller
                 ->addColumn('action', function ($brand) {
                     return '
                         <a class="block w-full px-2 py-1 mb-1 text-xs text-center text-white transition duration-500 bg-gray-700 border border-gray-700 rounded-md select-none ease hover:bg-gray-800 focus:outline-none focus:shadow-outline" 
-                            href="' . route('admin.brands.edit', $brand->id) . '">
+                            href="' . route('admin.brands.edit', $brand->slug) . '">
                             Sunting
                         </a>
                         <form class="block w-full" onsubmit="return confirm(\'Apakah anda yakin?\');" -block" action="' . route('admin.brands.destroy', $brand->id) . '" method="POST">
@@ -84,8 +84,16 @@ class BrandController extends Controller
      * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit(Brand $brand)
+    // public function edit(Brand $brand)
+    // {
+    //     return view('admin.brands.edit', [
+    //         'brand' => $brand,
+    //     ]);
+    // }
+    public function edit($slug)
     {
+        // $brand = Brand::whereSlug($slug)->first();
+        $brand = Brand::where('slug', $slug)->firstOrFail();
         return view('admin.brands.edit', [
             'brand' => $brand,
         ]);
@@ -105,7 +113,7 @@ class BrandController extends Controller
 
         $brand->update($data);
 
-        return redirect()->route('admin.brands.index');
+        return redirect()->route('admin.brands.index')->with('success', 'Brand berhasil diubah');
     }
 
     /**
@@ -118,6 +126,6 @@ class BrandController extends Controller
     {
         $brand->delete();
 
-        return redirect()->route('admin.brands.index');
+        return redirect()->route('admin.brands.index')->with('success', 'Brand berhasil dihapus');
     }
 }
