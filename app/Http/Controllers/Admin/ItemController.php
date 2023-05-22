@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Requests\ItemRequest;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,7 +20,9 @@ class ItemController extends Controller
      */
     public function index()
     {
+
         if (request()->ajax()) {
+            // $query = Item::with(['type', 'brand'])->get();
             $query = Item::with(['type', 'brand']);
 
             return DataTables::of($query)
@@ -29,7 +32,7 @@ class ItemController extends Controller
                 ->addColumn('action', function ($item) {
                     return '
                         <a class="block w-full px-2 py-1 mb-1 text-xs text-center text-white transition duration-500 bg-gray-700 border border-gray-700 rounded-md select-none ease hover:bg-gray-800 focus:outline-none focus:shadow-outline" 
-                            href="' . route('admin.items.edit', $item->id) . '">
+                            href="' . route('admin.items.edit', $item->slug) . '">
                             Sunting
                         </a>
                         <form class="block w-full" onsubmit="return confirm(\'Apakah anda yakin?\');" -block" action="' . route('admin.items.destroy', $item->id) . '" method="POST">
@@ -100,14 +103,13 @@ class ItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Item $item)
+    public function edit($slug)
     {
-        $item->load('type', 'brand');
-
+        $item = Item::where('slug', $slug)->firstOrFail();
         $brands = Brand::all();
         $types = Type::all();
 
-        return view('admin.item.edit', [
+        return view('admin.items.edit', [
             'item' => $item,
             'brands' => $brands,
             'types' => $types
@@ -120,7 +122,7 @@ class ItemController extends Controller
     public function update(ItemRequest $request, Item $item)
     {
         $data = $request->all();
-
+        $data['slug'] = Str::slug($data['name']) . '-' . Str::lower(Str::random(5));
         // If photos is not empty, then upload new photos
         if ($request->hasFile('photos')) {
             $photos = [];
