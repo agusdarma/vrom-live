@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ItemRequest extends FormRequest
+class BookingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,17 @@ class ItemRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'type_id' => 'required|exists:types,id',
-            'brand_id' => 'required|exists:brands,id',
-            'photos' => 'nullable|array',
-            'photos.*' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'features' => 'nullable|string',
-            'price' => 'required|numeric',
-            'star' => 'required|numeric',
-            'review' => 'required|numeric',
+            'start_date' => 'date',
+            'end_date' => 'date',
+            'address' => 'string|max:255',
+            'city' => 'string|max:255',
+            'zip' => 'string|max:255',
+            'payment_method' => 'string|max:255',
+            'payment_status' => 'required|string|max:255',
+            'payment_url' => 'string|max:255',
+            'total_price' => 'numeric',
+            'item_id' => 'exists:items,id',
+            'user_id' => 'exists:users,id',
         ];
     }
 }

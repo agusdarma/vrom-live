@@ -37,7 +37,7 @@ class Item extends Model
         }
 
         // return 'https://via.placeholder.com/800';
-        return Storage::url('default.png');
+        return Storage::url('public/assets/item/default.png');
     }
 
     protected $casts = [
