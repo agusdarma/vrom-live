@@ -84,7 +84,7 @@ class TypeController extends Controller
     public function update(TypeRequest $request, Type $type)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($data['name']) . '-' . Str::lower(Str::random(5));
+        // $data['slug'] = Str::slug($data['name']) . '-' . Str::lower(Str::random(5));
         $type->update($data);
         return redirect()->route('admin.types.index')->with('success', 'Type berhasil diubah');
     }

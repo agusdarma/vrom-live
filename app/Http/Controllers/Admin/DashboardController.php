@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
@@ -22,6 +23,9 @@ class DashboardController extends Controller
         //     echo $item->brand->name;
         //     echo "<br>";
         // }
+        // Log::debug('midtrans agus agus');
+        // Log::info('Showing the user profile for user: {id} {idd}', ['id' => 5, 'idd' => 55]);
+
         return view('admin.dashboard');
     }
 }

@@ -122,7 +122,7 @@ class ItemController extends Controller
     public function update(ItemRequest $request, Item $item)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($data['name']) . '-' . Str::lower(Str::random(5));
+        // $data['slug'] = Str::slug($data['name']) . '-' . Str::lower(Str::random(5));
         // If photos is not empty, then upload new photos
         if ($request->hasFile('photos')) {
             $photos = [];

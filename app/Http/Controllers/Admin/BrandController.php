@@ -109,7 +109,7 @@ class BrandController extends Controller
     public function update(BrandRequest $request, Brand $brand)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($data['name']) . '-' . Str::lower(Str::random(5));
+        // $data['slug'] = Str::slug($data['name']) . '-' . Str::lower(Str::random(5));
 
         $brand->update($data);
 
