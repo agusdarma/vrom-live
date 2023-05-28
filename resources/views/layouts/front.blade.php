@@ -20,13 +20,13 @@
 
 
   <!-- Core Style -->
-  <link rel="stylesheet" href="build/assets/all/style.css" />
+  <link rel="stylesheet" href="{{ url("build/assets/all/style.css")}}" />
   <!-- Font Icons -->
-  <link rel="stylesheet" href="build/assets/all/css/font-icons.css" />
+  <link rel="stylesheet" href="{{ url("build/assets/all/css/font-icons.css")}}" />
   <!-- Plugins/Components CSS -->
-  <link rel="stylesheet" href="build/assets/all/css/swiper.css" />
+  <link rel="stylesheet" href="{{ url("build/assets/all/css/swiper.css")}}" />
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="build/assets/all/css/custom.css" />
+  <link rel="stylesheet" href="{{ url("build/assets/all/css/custom.css")}}" />
 
   <!-- Styles -->
   @livewireStyles
@@ -164,6 +164,53 @@
       opacity: 1;
     }
   }
+
+  .file-caption.icon-visible .file-caption-name {
+			font-family: 'Lato', sans-serif;
+			color: #666;
+		}
+		.form-process {
+			position: absolute;
+			-webkit-transition: all .3s ease;
+			-o-transition: all .3s ease;
+			transition: all .3s ease;
+			background-image: none;
+		}
+
+		.form-process > div { background-color: #999;  }
+
+		.form-process,
+		#template-wedding-submitted,
+		.template-wedding-complete .form-process {
+			display: none;
+			opacity: 0;
+			background-color: rgba(255,255,255,0.7);
+		}
+
+		.template-wedding-processing .form-process {
+			display: block;
+			opacity: 1;
+		}
+
+		.divider.divider-center.divider-sm:before,
+		.divider.divider-center.divider-sm:after { border-color: #CCC; }
+
+		.btn-group label.error {
+			display: block !important;
+			text-transform: none;
+			position: absolute;
+		    bottom: -34px;
+		    left: 0;
+		    margin-bottom: 10px;
+		}
+
+		.btn-group input.valid ~ label.error,
+		.btn-group input[type="text"] ~ label.error,
+		.btn-group input[type="email"] ~ label.error,
+		.btn-group input[type="number"] ~ label.error,
+		.btn-group select ~ label.error { display: none !important; }
+
+
   </style>
 </head>
 
@@ -248,19 +295,19 @@
                 <img
                   class="logo-default"
                   srcset="
-                  build/assets/all/images/logo-trading-journey.png,
-                  build/assets/all/images/logo-trading-journey.png 2x
+                  {{ url("build/assets/all/images/logo-trading-journey.png")}},
+                  {{ url("build/assets/all/images/logo-trading-journey.png 2x")}}
                   "
-                  src="build/assets/all/images/logo-trading-journey.png"
+                  src="{{ url("build/assets/all/images/logo-trading-journey.png")}}"
                   alt="Trading Journey Logo"
                 />
                 <img
                   class="logo-dark"
                   srcset="
-                  build/assets/all/images/logo-trading-journey.png,
-                  build/assets/all/images/logo-trading-journey.png 2x
+                  {{ url("build/assets/all/images/logo-trading-journey.png")}},
+                  {{ url("build/assets/all/images/logo-trading-journey.png 2x")}}
                   "
-                  src="build/assets/all/images/logo-trading-journey.png"
+                  src="{{ url("build/assets/all/images/logo-trading-journey.png")}}"
                   alt="Trading Journey Logo"
                 />
               </a>
@@ -279,61 +326,61 @@
 
               <!-- Top Cart
             ============================================= -->
-              {{-- <div id="top-cart" class="header-misc-icon">
-                <a href="#" id="top-cart-trigger"
-                  ><i class="uil uil-shopping-bag"></i
-                  ><span class="top-cart-number">5</span></a
-                >
-                <div class="top-cart-content">
-                  <div class="top-cart-title">
-                    <h4>Shopping Cart</h4>
-                  </div>
-                  <div class="top-cart-items">
-                    <div class="top-cart-item">
-                      <div class="top-cart-item-image">
-                        <a href="#"
-                          ><img
-                            src="build/assets/all/images/shop/small/1.jpg"
-                            alt="Blue Round-Neck Tshirt"
-                        /></a>
-                      </div>
-                      <div class="top-cart-item-desc">
-                        <div class="top-cart-item-desc-title">
-                          <a href="#">Blue Round-Neck Tshirt with a Button</a>
-                          <span class="top-cart-item-price d-block"
-                            >$19.99</span
-                          >
-                        </div>
-                        <div class="top-cart-item-quantity">x 2</div>
-                      </div>
+            {{-- <div id="top-cart" class="header-misc-icon">
+              <a href="#" id="top-cart-trigger"
+                ><i class="uil uil-shopping-bag"></i
+                ><span class="top-cart-number">5</span></a
+              >
+              <div class="top-cart-content">
+                <div class="top-cart-title">
+                  <h4>Shopping Cart</h4>
+                </div>
+                <div class="top-cart-items">
+                  <div class="top-cart-item">
+                    <div class="top-cart-item-image">
+                      <a href="#"
+                        ><img
+                          src="images/shop/small/1.jpg"
+                          alt="Blue Round-Neck Tshirt"
+                      /></a>
                     </div>
-                    <div class="top-cart-item">
-                      <div class="top-cart-item-image">
-                        <a href="#"
-                          ><img
-                            src="build/assets/all/images/shop/small/6.jpg"
-                            alt="Light Blue Denim Dress"
-                        /></a>
+                    <div class="top-cart-item-desc">
+                      <div class="top-cart-item-desc-title">
+                        <a href="#">Blue Round-Neck Tshirt with a Button</a>
+                        <span class="top-cart-item-price d-block"
+                          >$19.99</span
+                        >
                       </div>
-                      <div class="top-cart-item-desc">
-                        <div class="top-cart-item-desc-title">
-                          <a href="#">Light Blue Denim Dress</a>
-                          <span class="top-cart-item-price d-block"
-                            >$24.99</span
-                          >
-                        </div>
-                        <div class="top-cart-item-quantity">x 3</div>
-                      </div>
+                      <div class="top-cart-item-quantity">x 2</div>
                     </div>
                   </div>
-                  <div class="top-cart-action">
-                    <span class="top-checkout-price">$114.95</span>
-                    <a href="#" class="m-0 button button-3d button-small"
-                      >View Cart</a
-                    >
+                  <div class="top-cart-item">
+                    <div class="top-cart-item-image">
+                      <a href="#"
+                        ><img
+                          src="images/shop/small/6.jpg"
+                          alt="Light Blue Denim Dress"
+                      /></a>
+                    </div>
+                    <div class="top-cart-item-desc">
+                      <div class="top-cart-item-desc-title">
+                        <a href="#">Light Blue Denim Dress</a>
+                        <span class="top-cart-item-price d-block"
+                          >$24.99</span
+                        >
+                      </div>
+                      <div class="top-cart-item-quantity">x 3</div>
+                    </div>
                   </div>
                 </div>
-              </div> --}}
+                <div class="top-cart-action">
+                  <span class="top-checkout-price">$114.95</span>
+                  <a href="#" class="m-0 button button-3d button-small"
+                    >View Cart</a
+                  >
+                </div>
+              </div>
+            </div> --}}
               <!-- #top-cart end -->
             </div>
 
@@ -353,6 +400,8 @@
 
             <!-- Primary Navigation
       ============================================= -->
+      <form method="POST" action="{{ route('logout') }}">
+        @csrf
             <nav class="primary-menu">
               <ul class="menu-container">
                 <li class="menu-item current">
@@ -362,16 +411,27 @@
                   <a class="menu-link" href="#"><div>Expert Advisor</div></a>
                   <ul class="sub-menu-container">
                     <li class="menu-item">
-                      <a class="menu-link" href="/euro-swing-master"><div>Euro Swing Master</div></a>
+                      <a class="menu-link" href="/euro-swing-master/euro-swing-master-n2i8j"><div>Euro Swing Master</div></a>
                     </li>
                     <li class="menu-item">
-                      <a class="menu-link" href="/golden-trend"><div>Golden Trend</div></a>
+                      <a class="menu-link" href="/golden-trend/golden-trend-8kkbd"><div>Golden Trend</div></a>
                     </li>
                   </ul>
-                </li>                
+                </li>    
+                @auth                
+                <li class="menu-item">                  
+                  <a class="menu-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                  this.closest('form').submit();"><div>Logout</div></a>                  
+                </li>                    
+                @else     
+                <li class="menu-item">
+                  <a class="menu-link" href="{{ route('login') }}"><div>Login</div></a>
+                </li>
+                @endauth              
                 <div class="morph-marker"></div>
               </ul>
-            </nav>
+            </nav>    
+          </form>       
             <!-- #primary-menu end -->
 
             <form class="top-search-form" action="#" method="get">
@@ -401,7 +461,7 @@
             rgba(0, 0, 0, 0.95),
             rgba(0, 0, 0, 0.6)
           ),
-          url('build/assets/all/images/blocks/preview/hero-10/main.jpg') no-repeat center /
+          url('{{ url("build/assets/all/images/blocks/preview/hero-10/main.jpg")}}') no-repeat center /
             cover;
       "
     >
@@ -418,16 +478,16 @@
               </div>                
               <div class="row">
                 <div class="col-6">
-                  <div class="p-1 center"><img src="build/assets/all/images/mql5.webp" alt="..."></div>
+                  <div class="p-1 center"><img src="{{ url("build/assets/all/images/mql5.webp")}}" alt="..."></div>
                 </div>
                 <div class="col-6">
-                  <div class="p-1 center"><img src="build/assets/all/images/mt4.webp" alt="..."></div>
+                  <div class="p-1 center"><img src="{{ url("build/assets/all/images/mt4.webp")}}" alt="..."></div>
                 </div>
                 <div class="col-6">
-                  <div class="p-1 center"><img src="build/assets/all/images/mt5-logo3.webp" alt="..."></div>
+                  <div class="p-1 center"><img src="{{ url("build/assets/all/images/mt5-logo3.webp")}}" alt="..."></div>
                 </div>
                 <div class="col-6">
-                  <div class="p-1 center"><img src="build/assets/all/images/myfxbook.webp" alt="..."></div>
+                  <div class="p-1 center"><img src="{{ url("build/assets/all/images/myfxbook.webp")}}" alt="..."></div>
                 </div>
               </div>                                      
           </div>  
@@ -460,7 +520,7 @@
 
                     <div
                       style="
-                        background: url('build/assets/all/images/world-map.png') no-repeat
+                        background: url('{{ url("build/assets/all/images/world-map.png")}}') no-repeat
                           center center;
                         background-size: 100%;
                       "
@@ -481,13 +541,13 @@
                       </li>
                       <li>
                         <a
-                          href="/euro-swing-master"
+                          href="/euro-swing-master/euro-swing-master-n2i8j"
                           >Euro Swing Master EA</a
                         >
                       </li>
                       <li>
                         <a
-                          href="/golden-trend"
+                          href="/golden-trend/golden-trend-8kkbd"
                           >Golden Trend EA</a
                         >
                       </li>
@@ -573,10 +633,10 @@
   <div id="gotoTop" class="uil uil-angle-up"></div>
 <!-- JavaScripts
 	============================================= -->
-  <script src="build/assets/all/js/jquery.js"></script>
-  <script src="build/assets/all/js/functions.js"></script>  
-  <script src="build/assets/all/js/plugins.counter.js"></script>
-  <script src="build/assets/all/js/plugins.bootstrap.js"></script>
+  <script src="{{ url("build/assets/all/js/jquery.js")}}"></script>
+  <script src="{{ url("build/assets/all/js/functions.js")}}"></script>  
+  <script src="{{ url("build/assets/all/js/plugins.counter.js")}}"></script>
+  <script src="{{ url("build/assets/all/js/plugins.bootstrap.js")}}"></script>
   
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>

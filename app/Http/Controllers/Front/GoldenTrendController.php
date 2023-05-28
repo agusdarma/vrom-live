@@ -8,12 +8,13 @@ use App\Http\Controllers\Controller;
 
 class GoldenTrendController extends Controller
 {
-    public function index()
+    public function index($slug)
     {
-        $items = Item::with(['type', 'brand'])->latest()->take(4)->get()->reverse();
+        // $items = Item::with(['type', 'brand'])->latest()->take(4)->get()->reverse();
+        $item = Item::with(['type', 'brand'])->whereSlug($slug)->firstOrFail();
 
         return view('golden-trend', [
-            'items' => $items
+            'item' => $item
         ]);
     }
 }

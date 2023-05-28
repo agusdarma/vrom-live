@@ -2,7 +2,7 @@
     <!--Shape Divider--> 
     <div class="p-0 mt-5 section min-vh-75">
       <img
-        src="build/assets/all/images/shape-divider/11.jpg"
+        src="{{ url("build/assets/all/images/shape-divider/11.jpg")}}"
         alt="Shape Divider Sample Image"
         class="top-0 object-cover w-100 h-100 position-absolute start-0"
       />
@@ -21,7 +21,7 @@
     <div class="text-center bg-white section">                  
         <div class="row col-mb-50">
           <div class="p-6 col-md-5 d-inline-flex" style="min-height: 350px">
-            <img src="build/assets/all/images/logo-golden-trend.png" alt="logo logo-golden-trend">
+            <img src="{{ url("build/assets/all/images/logo-golden-trend.png")}}" alt="logo logo-golden-trend">
           </div>
 
           <div class="text-center col-md-7 text-md-start bg-light">
@@ -39,14 +39,14 @@
               EA can be run even though the minimum balance. Ea contains a special drawdown
               control function.</p>
 
-            <a href="#" class="text-black button button-3d button-large bg-golden">Rent Now</a>
+            <a href="{{ route('front.checkout', $item->slug) }}" class="text-black button button-3d button-large bg-golden">Rent Now</a>
 
           </div>
         </div>                  
         <!--Shape Divider--> 
         <div class="p-0 mt-5 section min-vh-75">
           <img
-            src="build/assets/all/images/shape-divider/11.jpg"
+            src="{{ url("build/assets/all/images/shape-divider/11.jpg")}}"
             alt="Shape Divider Sample Image"
             class="top-0 object-cover w-100 h-100 position-absolute start-0"
           />
@@ -134,37 +134,37 @@
               </div>
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img class="h-auto d-block w-100" src="build/assets/all/images/equity.jpg" alt="Equity History">
+                  <img class="h-auto d-block w-100" src="{{ url("build/assets/all/images/equity.jpg")}}" alt="Equity History">
                   <div class="carousel-caption d-none d-lg-block">
                     <h3 class="mb-2 text-black bg-golden" style="width: 18rem;">Equity History</h3>                              
                   </div>
                 </div>
                 <div class="carousel-item">
-                  <img class="h-auto d-block w-100" src="build/assets/all/images/draw_down.jpg" alt="Drawdown History">
+                  <img class="h-auto d-block w-100" src="{{ url("build/assets/all/images/draw_down.jpg")}}" alt="Drawdown History">
                   <div class="carousel-caption d-none d-lg-block">
                     <h3 class="mb-2 text-black bg-golden" style="width: 12rem;">Drawdown History</h3>                              
                   </div>
                 </div>
                 <div class="carousel-item">
-                  <img class="h-auto d-block w-100" src="build/assets/all/images/growth_march.jpg" alt="History Growth March">
+                  <img class="h-auto d-block w-100" src="{{ url("build/assets/all/images/growth_march.jpg")}}" alt="History Growth March">
                   <div class="carousel-caption d-none d-lg-block">
                     <h3 class="mb-2 text-black bg-golden" style="width: 20rem;">History Growth March</h3>                              
                   </div>
                 </div>
                 <div class="carousel-item">
-                  <img class="h-auto d-block w-100" src="build/assets/all/images/growth_feb.jpg" alt="History Growth February">
+                  <img class="h-auto d-block w-100" src="{{ url("build/assets/all/images/growth_feb.jpg")}}" alt="History Growth February">
                   <div class="carousel-caption d-none d-lg-block">
                     <h3 class="mb-2 text-black bg-golden" style="width: 20rem;">History Growth Feb</h3>                              
                   </div>
                 </div>
                 <div class="carousel-item">
-                  <img class="h-auto d-block w-100" src="build/assets/all/images/growth_jan.jpg" alt="History Growth January">
+                  <img class="h-auto d-block w-100" src="{{ url("build/assets/all/images/growth_jan.jpg")}}" alt="History Growth January">
                   <div class="carousel-caption d-none d-lg-block">
                     <h3 class="mb-2 text-black bg-golden" style="width: 20rem;">History Growth January</h3>                              
                   </div>
                 </div>
                 <div class="carousel-item">
-                  <img class="h-auto d-block w-100" src="build/assets/all/images/backtest_golden_trend.jpg" alt="Backtest">
+                  <img class="h-auto d-block w-100" src="{{ url("build/assets/all/images/backtest_golden_trend.jpg")}}" alt="Backtest">
                   <div class="carousel-caption d-none d-lg-block">
                     <h3 class="mb-2 text-black bg-golden" style="width: 20rem;">Backtest</h3>                              
                   </div>
@@ -189,7 +189,7 @@
             <strong><i class="bi-boxes"></i> Good News!</strong> Rent Golden Trend Expert NOW!
           </div>
           <div class="mt-3 col-lg-auto mt-lg-0">
-            <a href="#" class="text-white btn btn-primary">Rent Now</a>
+            <a href="{{ route('front.checkout', $item->slug) }}" class="text-white btn btn-primary">Rent Now</a>
             <button type="button" class="btn-close btn btn-link float-lg-none text-dark ms-md-3" data-bs-dismiss="alert" aria-hidden="true"></button>
           </div>
         </div>

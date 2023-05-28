@@ -28,8 +28,8 @@ use App\Http\Controllers\Front\GoldenTrendController;
 
 Route::name('front.')->group(function () {
     Route::get('/', [LandingController::class, 'index'])->name('index');
-    Route::get('/euro-swing-master', [EuroSwingMasterController::class, 'index'])->name('index');
-    Route::get('/golden-trend', [GoldenTrendController::class, 'index'])->name('index');
+    Route::get('/euro-swing-master/{slug}', [EuroSwingMasterController::class, 'index'])->name('euro');
+    Route::get('/golden-trend/{slug}', [GoldenTrendController::class, 'index'])->name('golden');
     Route::get('/faqs', [FaqsController::class, 'index'])->name('index');
     Route::get('/detail/{slug}', [DetailController::class, 'index'])->name('detail');
 

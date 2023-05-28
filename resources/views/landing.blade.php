@@ -2,7 +2,7 @@
     <!--Shape Divider--> 
     <div class="p-0 mt-5 section min-vh-75">
         <img
-          src="build/assets/all/images/shape-divider/11.jpg"
+          src="{{ url("build/assets/all/images/shape-divider/11.jpg")}}"
           alt="Shape Divider Sample Image"
           class="top-0 object-cover w-100 h-100 position-absolute start-0"
         />
@@ -21,11 +21,11 @@
       <div class="text-center bg-white section">
           <div class="container py-5">
             <div class="promo-users">
-              <img src="build/assets/all/images/users/1.jpg" alt=".." class="square square-lg rounded-circle">
-              <img src="build/assets/all/images/users/2.jpg" alt=".." class="square square-md rounded-circle">
-              <img src="build/assets/all/images/users/3.jpg" alt=".." class="square square-md rounded-circle">
-              <img src="build/assets/all/images/users/4.jpg" alt=".." class="square square-lg rounded-circle">
-              <img src="build/assets/all/images/users/5.jpg" alt=".." class="square square-lg rounded-circle">
+              <img src="{{ url("build/assets/all/images/users/1.jpg")}}" alt=".." class="square square-lg rounded-circle">
+              <img src="{{ url("build/assets/all/images/users/2.jpg")}}" alt=".." class="square square-md rounded-circle">
+              <img src="{{ url("build/assets/all/images/users/3.jpg")}}" alt=".." class="square square-md rounded-circle">
+              <img src="{{ url("build/assets/all/images/users/4.jpg")}}" alt=".." class="square square-lg rounded-circle">
+              <img src="{{ url("build/assets/all/images/users/5.jpg")}}" alt=".." class="square square-lg rounded-circle">
             </div>                    
             <div class="divider divider-right"><i class="bi-heart-fill"></i></div>
             <div class="row justify-content-center">
@@ -55,7 +55,7 @@
           <div class="divider divider-right"><i class="bi-heart-fill"></i></div>
           <div class="row col-mb-50">
             <div class="p-6 col-md-5 d-inline-flex" style="min-height: 350px">
-              <img src="build/assets/all/images/logo-euro-swing-master.png" alt="logo euro swing master">
+              <img src="{{ url("build/assets/all/images/logo-euro-swing-master.png")}}" alt="logo euro swing master">
             </div>
 
             <div class="text-center col-md-7 text-md-start bg-light">
@@ -77,14 +77,15 @@ mathematical calculations on candles (details are confidential), and a few more.
 <p>Artificial
 intelligence makes decisions based on the past 400 or 500 candles</p>
 
-              <a href="/euro-swing-master" class="text-black button button-3d button-large bg-hijau-stabilo">Learn more about Euro Swing Master</a>
-
+              {{-- <a href="/euro-swing-master/euro-swing-master-n2i8j" class="text-black button button-3d button-large bg-hijau-stabilo">Learn more about Euro Swing Master</a> --}}
+              <a href="{{ route('front.euro', $euro->slug) }}" class="text-black button button-3d button-large bg-hijau-stabilo">Learn more about Euro Swing Master</a>
+              
             </div>
           </div>
           <div class="divider divider-right"><i class="bi-heart-fill"></i></div>
           <div class="row col-mb-50">
             <div class="p-6 col-md-5 d-inline-flex" style="min-height: 350px">
-              <img src="build/assets/all/images/logo-golden-trend.png" alt="logo euro swing master">
+              <img src="{{ url("build/assets/all/images/logo-golden-trend.png")}}" alt="logo euro swing master">
             </div>
 
             <div class="text-center col-md-7 text-md-start bg-light">
@@ -103,14 +104,16 @@ a fixed lot or auto lot money management. </p>
 EA can be run even though the minimum balance. Ea contains a special drawdown
 control function.</p>
 
-              <a href="/golden-trend" class="text-black button button-3d button-large bg-golden">Learn more about Golden Trend</a>
+              {{-- <a href="/golden-trend/golden-trend-8kkbd" class="text-black button button-3d button-large bg-golden">Learn more about Golden Trend</a> --}}
+              <a href="{{ route('front.golden', $golden->slug) }}" class="text-black button button-3d button-large bg-golden">Learn more about Golden Trend</a>
+              
 
             </div>
           </div>
           <!--Shape Divider--> 
           <div class="p-0 mt-5 section min-vh-75">
             <img
-              src="build/assets/all/images/shape-divider/11.jpg"
+              src="{{ url("build/assets/all/images/shape-divider/11.jpg")}}"
               alt="Shape Divider Sample Image"
               class="top-0 object-cover w-100 h-100 position-absolute start-0"
             />

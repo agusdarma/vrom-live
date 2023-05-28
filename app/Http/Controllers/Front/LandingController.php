@@ -10,10 +10,15 @@ class LandingController extends Controller
 {
     public function index()
     {
-        $items = Item::with(['type', 'brand'])->latest()->take(4)->get()->reverse();
+        // $items = Item::with(['type', 'brand'])->latest()->take(4)->get()->reverse();
+        $euro = Item::with(['type', 'brand'])->whereName('Euro Swing Master')->take(4)->get()->firstOrFail();
+        $golden = Item::with(['type', 'brand'])->whereName('Golden Trend')->take(4)->get()->firstOrFail();
 
         return view('landing', [
-            'items' => $items
+            'euro' => $euro,
+            'golden' => $golden,
+            
+
         ]);
     }
 }

@@ -2,7 +2,7 @@
     <!--Shape Divider--> 
     <div class="p-0 mt-5 section min-vh-75">
       <img
-        src="build/assets/all/images/shape-divider/11.jpg"
+        src="{{ url("build/assets/all/images/shape-divider/11.jpg")}}"
         alt="Shape Divider Sample Image"
         class="top-0 object-cover w-100 h-100 position-absolute start-0"
       />
@@ -128,7 +128,7 @@
     <!--Shape Divider--> 
     <div class="p-0 mt-5 section min-vh-75">
       <img
-        src="build/assets/all/images/shape-divider/11.jpg"
+        src="{{ url("build/assets/all/images/shape-divider/11.jpg")}}"
         alt="Shape Divider Sample Image"
         class="top-0 object-cover w-100 h-100 position-absolute start-0"
       />

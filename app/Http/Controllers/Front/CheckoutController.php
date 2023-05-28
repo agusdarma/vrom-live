@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use Carbon\Carbon;
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 
 class CheckoutController extends Controller
@@ -23,34 +24,41 @@ class CheckoutController extends Controller
         // Validate the request
         $request->validate([
             'name' => 'required',
-            'start_date' => 'required',
-            'end_date' => 'required',
-            'address' => 'required',
-            'city' => 'required',
-            'zip' => 'required'
+            'email' => 'required',
+            'noHp' => 'required',
+            'waktuSewa' => 'required'
+            // 'start_date' => 'required',
+            // 'end_date' => 'required',
+            // 'address' => 'required',
+            // 'city' => 'required',
+            // 'zip' => 'required'
         ]);
 
+        $waktuSewa = $request->waktuSewa;
+        Log::info('waktuSewa: {waktuSewa}', ['waktuSewa' => $waktuSewa]);
         // Format start_date and end_date from dd mm yyyy to timestamp
-        $start_date = Carbon::createFromFormat('d m Y', $request->start_date);
-        $end_date = Carbon::createFromFormat('d m Y', $request->end_date);
+        // $start_date = Carbon::createFromFormat('d m Y', now());
+        // $end_date = Carbon::createFromFormat('d m Y', now());
 
         // Count the number of days between start_date and end_date
-        $days = $start_date->diffInDays($end_date);
+        // $days = $start_date->diffInDays($end_date);
 
         // Get the item
         $item = Item::whereSlug($slug)->firstOrFail();
 
         // Calculate the total price
-        $total_price = $days * $item->price;
+        // $total_price = $days * $item->price;
+        $total_price = $waktuSewa * $item->price;
+        Log::info('total_price: {total_price}', ['total_price' => $total_price]);
 
         // Add 10% tax
-        $total_price = $total_price + ($total_price * 0.1);
+        // $total_price = $total_price + ($total_price * 0.1);
 
         // Create a new booking
         $booking = $item->bookings()->create([
             'name' => $request->name,
-            'start_date' => $start_date,
-            'end_date' => $end_date,
+            // 'start_date' => $start_date,
+            // 'end_date' => $end_date,
             'address' => $request->address,
             'city' => $request->city,
             'zip' => $request->zip,

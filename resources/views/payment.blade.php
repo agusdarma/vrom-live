@@ -1,133 +1,65 @@
 <x-front-layout>
-    <!-- Main Content -->
-    <section class="bg-darkGrey relative py-[70px]">
-        <div class="container">
-            <header class="mb-[30px]">
-                <h2 class="font-bold text-dark text-[26px] mb-1">
-                    Checkout & Drive Faster
-                </h2>
-                <p class="text-base text-secondary">We will help you get ready today</p>
-            </header>
-
-            <div class="flex items-center gap-5 lg:justify-between">
-                <!-- Form Card -->
-                <form action="{{ route('front.payment.update', $booking->id) }}" method="POST"
-                    class="bg-white p-[30px] pb-10 rounded-3xl max-w-[490px] w-full" id="checkoutForm">
-                    @csrf
-                    @method('post')
-                    <div class="flex flex-col gap-[30px]">
-                        <div class="flex flex-col gap-4">
-                            <h5 class="text-lg font-semibold">
-                                Review Order
-                            </h5>
-                            <!-- Items -->
-                            <div class="flex items-center justify-between">
-                                <p class="text-base font-normal">
-                                    Car choosen
-                                </p>
-                                <p class="text-base font-semibold">
-                                    {{ $booking->item->brand->name }} {{ $booking->item->name }}
-                                </p>
-                            </div>
-                            <!-- Items -->
-                            <div class="flex items-center justify-between">
-                                <p class="text-base font-normal">
-                                    Total day
-                                </p>
-                                <p class="text-base font-semibold">
-                                    {{-- {{ $booking->start_date->diffInDays($booking->end_date) }} days --}}
-                                    {{ $days }} days
-
-                                </p>
-                            </div>
-                            <!-- Items -->
-                            <div class="flex items-center justify-between">
-                                <p class="text-base font-normal">
-                                    Service
-                                </p>
-                                <p class="text-base font-semibold">
-                                    Delivery
-                                </p>
-                            </div>
-                            <!-- Items -->
-                            <div class="flex items-center justify-between">
-                                <p class="text-base font-normal">
-                                    Price
-                                </p>
-                                <p class="text-base font-semibold">
-                                    ${{ $booking->item->price }} per day
-                                </p>
-                            </div>
-                            <!-- Items -->
-                            <div class="flex items-center justify-between">
-                                <p class="text-base font-normal">
-                                    VAT (10%)
-                                </p>
-                                <p class="text-base font-semibold">
-                                    ${{ $ppn }}
-                                </p>
-                            </div>
-                            <!-- Items -->
-                            <div class="flex items-center justify-between">
-                                <p class="text-base font-normal">
-                                    Grand total
-                                </p>
-                                <p class="text-base font-semibold">
-                                    ${{ $booking->total_price }}
-                                </p>
-                            </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-7 col-md-10">
+          <div class="my-5 shadow-sm card">
+            <div class="p-5 card-body">
+              <h4 class="text-center ls-4">Confirmation Form</h4>
+              <div class="divider divider-sm divider-center text-dark"><i class="bi-heart"></i></div>
+              <div class="form-widget" data-alert-type="false">
+                <div class="form-result"></div>
+                <div class="form-process">
+                  <div class="css3-spinner">
+                    <div class="css3-spinner-double-bounce1"></div>
+                    <div class="css3-spinner-double-bounce2"></div>
+                  </div>
+                </div>
+                <form class="mb-0" id="checkoutForm" action="{{ route('front.payment.update', $booking->id) }}" 
+                  method="post">
+                  @csrf
+                  @method('post')
+                  <div class="row g-4">            
+                    <div class="col-12">
+                        <div class="col-md-6">
+                            <img src="{{ url($booking->item->thumbnail)}}" alt="logo euro swing master">
+                          </div>
+                      <div class="row g-4">                        
+                        <div class="col-md-6">
+                            <label for="name">Item<small class="text-danger"></small></label>
+                            <input disabled="true" type="text" id="name" name="name" value="{{ $booking->item->name }}" class="form-control required">                            
+                          </div>
+                        <div class="col-md-6">
+                          <label for="name">Name<small class="text-danger">*</small></label>
+                          <input disabled="true" type="text" id="name" name="name" value="{{ $booking->name }}" class="form-control required">
                         </div>
-                        <div class="flex flex-col gap-4">
-                            <h5 class="text-lg font-semibold">
-                                Payment Method
-                            </h5>
-                            <div class="grid md:grid-cols-2 gap-4 md:gap-[30px] items-center">
-                                {{-- <div class="relative boxPayment opacity-30">
-                                    <input type="radio" value="mastercard" name="payment_method" id="mastercard"
-                                        class="absolute inset-0 z-50 opacity-0 cursor-pointer" disabled>
-                                    <label for="mastercard"
-                                        class="flex items-center justify-center gap-4 border border-grey rounded-[20px] p-5 min-h-[80px]">
-                                        <img src="/svgs/logo-mastercard.svg" alt="">
-                                        <p class="text-base font-semibold">
-                                            MasterCard
-                                        </p>
-                                    </label>
-                                </div> --}}
-                                <div class="relative boxPayment">
-                                    <input type="radio" value="midtrans" name="payment_method" id="midtrans"
-                                        class="absolute inset-0 z-50 opacity-0 cursor-pointer">
-                                    <label for="midtrans"
-                                        class="flex items-center justify-center gap-4 border border-grey rounded-[20px] p-5 min-h-[80px]">
-                                        <img src="/svgs/logo-midtrans.svg" alt="">
-                                        <p class="text-base font-semibold">
-                                            Midtrans
-                                        </p>
-                                    </label>
-                                </div>
-                            </div>
+                        <div class="col-md-6">
+                          <label for="email">Email</label>
+                          <input disabled="true" type="text" id="email" name="email" value="{{ Auth::user()->email }}" class="form-control">
                         </div>
-                        <!-- CTA Button -->
-                        <div class="col-span-2 mt-5">
-                            <!-- Button Primary -->
-                            <div class="p-1 rounded-full bg-primary group">
-                                <a href="#!" class="btn-primary" id="checkoutButton">
-                                    <p>
-                                        Continue
-                                    </p>
-                                    <img src="/svgs/ic-arrow-right.svg" alt="">
-                                </a>
-                            </div>
+                        <div class="col-md-6">
+                          <label for="noHp">Handphone No<small class="text-danger">*</small></label>
+                          <input disabled="true" type="text" id="noHp" name="noHp" value="{{ Auth::user()->phone }}" class="form-control required">
+                        </div> 
+                        <div class="col-md-6">
+                          <label for="waktuSewa">Rent For<small class="text-danger">*</small></label>
+                          <input disabled="true" type="text" id="waktuSewa" value="{{ Auth::user()->phone }}" class="form-control required">
                         </div>
-                    </div>
+                        <div class="col-md-6">
+                            <label for="paymentMethod">Payment Method<small class="text-danger">*</small></label>
+                            <select id="paymentMethod" name="payment_method" class="form-select required">
+                              <option value="" disabled selected>Select Payment Method</option>
+                              <option value="midtrans">Midtrans</option>                              
+                            </select>
+                          </div>
+                      </div>                  
+                    </div>                
+                    <div class="col-12">
+                      <button type="submit" id="checkoutButton" class="btn btn-secondary w-100 btn-lg">Checkout</button>
+                    </div>      
+                  </div>
                 </form>
-                <img src="/images/porsche_small.webp" class="max-w-[50%] hidden lg:block -mr-[200px]" alt="">
+              </div>        
             </div>
+          </div>
         </div>
-    </section>
-    <script>
-        // on checkoutButton click, submit the form
-        $('#checkoutButton').click(function() {
-            $('#checkoutForm').submit();
-        });
-    </script>
+      </div>
 </x-front-layout>
