@@ -12,11 +12,8 @@ class Booking extends Model
 
     protected $fillable = [
         'name',
-        'start_date',
-        'end_date',
-        'address',
-        'city',
-        'zip',
+        'email',
+        'no_hp',
         'status',
         'payment_method',
         'payment_status',
@@ -26,10 +23,10 @@ class Booking extends Model
         'user_id',
     ];
 
-    protected $dates = [
-        'start_date',
-        'end_date',
-    ];
+    // protected $dates = [
+    //     'start_date',
+    //     'end_date',
+    // ];
 
 
     public function user()

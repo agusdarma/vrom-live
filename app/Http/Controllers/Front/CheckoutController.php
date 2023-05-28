@@ -7,6 +7,7 @@ use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
 
 class CheckoutController extends Controller
 {
@@ -35,7 +36,13 @@ class CheckoutController extends Controller
         ]);
 
         $waktuSewa = $request->waktuSewa;
-        Log::info('waktuSewa: {waktuSewa}', ['waktuSewa' => $waktuSewa]);
+        // Log::info('waktuSewa: {waktuSewa}', ['waktuSewa' => $waktuSewa]);
+
+        $route = Route::current(); // Illuminate\Routing\Route
+        $name = Route::currentRouteName(); // string
+        $action = Route::currentRouteAction(); // string
+        Log::info('[{action}] waktuSewa: {waktuSewa}',['waktuSewa' => $waktuSewa,'action' => $action]);
+
         // Format start_date and end_date from dd mm yyyy to timestamp
         // $start_date = Carbon::createFromFormat('d m Y', now());
         // $end_date = Carbon::createFromFormat('d m Y', now());

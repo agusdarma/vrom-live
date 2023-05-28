@@ -26,23 +26,7 @@
           {
             data: 'user.name',
             name: 'user.name'
-          },
-          {
-            data: 'item.brand.name',
-            name: 'item.brand.name'
-          },
-          {
-            data: 'item.name',
-            name: 'item.name'
-          },
-          {
-            data: 'start_date',
-            name: 'start_date'
-          },
-          {
-            data: 'end_date',
-            name: 'end_date'
-          },         
+          },                    
            {
             data: 'status',
             name: 'status'
@@ -75,11 +59,7 @@
               <tr>
                 <th style="max-width: 1%">ID</th>
                 <th>Booking Name</th>
-                <th>User</th>
-                <th>Brand</th>
-                <th>Item</th>
-                <th>Mulai</th>
-                <th>Selesai</th>        
+                <th>User</th>                                   
                 <th>Status</th>        
                 <th>Status Pembayaran</th>
                 <th>Total Dibayar</th>
