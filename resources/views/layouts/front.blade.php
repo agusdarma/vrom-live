@@ -9,90 +9,666 @@
 
   <title>{{ config('app.name', 'Laravel') }}</title>
 
-  <!-- Fonts -->
-  <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+  <!-- Font Imports -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:ital,wght@1,700&display=swap"
+    rel="stylesheet"
+  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,700;1,400&family=Maitree:wght@300;400;500;600;700&family=Crete+Round:ital,wght@1,400&display=swap" rel="stylesheet">
 
-  <!-- Libraries -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <script defer src="https://unpkg.com/alpinejs@3.7.0/dist/cdn.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
-          integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 
-  <!-- Scripts -->
-  @vite(['resources/css/front.css'])
+  <!-- Core Style -->
+  <link rel="stylesheet" href="build/assets/all/style.css" />
+  <!-- Font Icons -->
+  <link rel="stylesheet" href="build/assets/all/css/font-icons.css" />
+  <!-- Plugins/Components CSS -->
+  <link rel="stylesheet" href="build/assets/all/css/swiper.css" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="build/assets/all/css/custom.css" />
 
   <!-- Styles -->
   @livewireStyles
+
+  <style>
+    @media (min-width: 992px) {
+      .block-nav-header-2 #top-bar.transparent-topbar {
+        background: transparent !important;
+        z-index: 399;
+        border-bottom: 0;
+      }
+
+      .block-nav-header-2 .primary-menu {
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .block-nav-header-2
+        .transparent-topbar
+        + .transparent-header
+        + #content {
+        margin-top: -163px; /*  #header(height) + #top-bar(height) */
+      }
+    }
+
+    .block-nav-header-2 .dark .top-links li > a,
+    .block-nav-header-2 .dark #top-social li a {
+      color: #f5f5f5;
+    }
+
+    .block-nav-header-2 .dark #top-social li,
+    .block-nav-header-2 .top-links-item {
+      border-left: 0;
+    }
+
+    @media (min-width: 992px) {
+      .morph-marker {
+        --cnvs-morph-height: 3px;
+        --cnvs-morph-duration: 0.3s;
+        position: absolute;
+        display: block;
+        background: var(--cnvs-themecolor);
+        height: var(--cnvs-morph-height);
+        border-radius: var(--bs-border-radius);
+        transition: all var(--cnvs-morph-duration);
+      }
+
+      .morph-bg .morph-marker {
+        --cnvs-morph-height: 100%;
+        opacity: 0.1;
+        bottom: 0 !important;
+      }
+
+      .morph-bg .menu-link {
+        position: relative;
+        --cnvs-primary-menu-padding-y: 11px;
+        --cnvs-primary-menu-hover-color: var(--cnvs-primary-menu-color);
+        z-index: 1;
+      }
+    }
+
+    <!--footer-- > .widget_links li a {
+      display: flex;
+      justify-content: space-between;
+      flex: 1 1 auto;
+      font-size: 1.275rem;
+      padding: 0.25rem 0;
+    }
+
+    .widget_links li:last-child a {
+      padding-bottom: 0;
+    }
+
+    .widget_links li a,
+    .widget_links li a i {
+      transition: transform 0.3s;
+    }
+
+    .widget_links li a:hover {
+      color: var(--cnvs-themecolor);
+      transform: translateX(-5px);
+    }
+
+    .widget_links li a:hover i {
+      transform: scale(1.5);
+    }
+    :root {
+    --cnvs-primary-font: 'Maitree', serif;
+  }
+
+  .promo-users {
+    opacity: 0.1;
+    --cnvs-promo-users-img-pos-x: 0;
+    --cnvs-promo-users-img-pos-y: 0;
+  }
+
+  .promo-users img {
+    position: absolute;
+    top: var(--cnvs-promo-users-img-pos-y);
+    left: var(--cnvs-promo-users-img-pos-x);
+    bottom: var(--cnvs-promo-users-img-pos-y);
+    right: var(--cnvs-promo-users-img-pos-x);
+  }
+
+  .promo-users img:nth-child(1) {
+    --cnvs-promo-users-img-pos-x: 13%;
+    --cnvs-promo-users-img-pos-y: -6%;
+  }
+
+  .promo-users img:nth-child(2) {
+    --cnvs-promo-users-img-pos-x: 4%;
+    --cnvs-promo-users-img-pos-y: 49%;
+  }
+
+  .promo-users img:nth-child(3) {
+    left: auto;
+    --cnvs-promo-users-img-pos-x: 2%;
+    --cnvs-promo-users-img-pos-y: 0%;
+  }
+
+  .promo-users img:nth-child(4) {
+    left: auto;
+    top: auto;
+    --cnvs-promo-users-img-pos-x: 0;
+    --cnvs-promo-users-img-pos-y: 3%;
+  }
+
+  .promo-users img:nth-child(5) {
+    top: auto;
+    --cnvs-promo-users-img-pos-x: 17%;
+    --cnvs-promo-users-img-pos-y: 3%;
+  }
+
+  @media (min-width: 768px) {
+    .promo-users {
+      opacity: 1;
+    }
+  }
+  </style>
 </head>
 
-<body>
-  <main>
-    <nav class="container relative my-4 lg:my-10">
-      <div class="flex flex-col justify-between w-full lg:flex-row lg:items-center">
-        <!-- Logo & Toggler Button here -->
-        <div class="flex items-center justify-between">
-          <!-- LOGO -->
-          <a href="{{ route('front.index') }}">
-            <img src="/svgs/logo.svg" alt="stream" />
-          </a>
-          <!-- RESPONSIVE NAVBAR BUTTON TOGGLER -->
-          <div class="block lg:hidden">
-            <button class="p-1 outline-none mobileMenuButton" id="navbarToggler" data-target="#navigation">
-              <svg class="text-dark w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                   xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"></path>
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- Nav Menu -->
-        <div class="hidden w-full lg:block" id="navigation">
-          <div class="flex flex-col items-baseline gap-4 mt-6 lg:justify-between lg:flex-row lg:items-center lg:mt-0">
-            <div class="flex flex-col w-full ml-auto lg:w-auto gap-4 lg:gap-[50px] lg:items-center lg:flex-row">
-              <a href="#!" class="nav-link-item">Landing</a>
-              <a href="#!" class="nav-link-item">Catalog</a>
-              <a href="#!" class="nav-link-item">Benefits</a>
-              <a href="#!" class="nav-link-item">Stories</a>
-              <a href="#!" class="nav-link-item">Maps</a>
+<body class="stretched block-nav-header-2">
+  <!-- Document Wrapper ============================== -->
+  <div id="wrapper">
+    <!-- Top Bar
+  ============================================= -->
+    <div id="top-bar" class="transparent-topbar dark py-md-2">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-12 col-lg-3 col-md-2">
+            <div
+              class="top-links d-flex justify-content-center justify-content-lg-start"
+            >
+              <ul class="top-links-container">
+                <li class="top-links-item">
+                  <a href="#">EN</a>
+                  <ul class="top-links-sub-menu" style="width: 53px; left: 0">
+                    <li class="top-links-item"><a href="#">ID</a></li>
+                  </ul>
+                </li>
+              </ul>
             </div>
-            @auth
-              <div class="flex flex-col w-full ml-auto lg:w-auto lg:gap-12 lg:items-center lg:flex-row">
-                {{-- Logout --}}
-                <form method="POST" action="{{ route('logout') }}">
-                  @csrf
-                  <a href="{{ route('logout') }}" class="btn-secondary"
-                     onclick="event.preventDefault();
-                  this.closest('form').submit();">
-                    Log Out
-                  </a>
-                </form>
-              </div>
-            @else
-              <div class="flex flex-col w-full ml-auto lg:w-auto lg:gap-12 lg:items-center lg:flex-row">
-                <a href="{{ route('login') }}" class="btn-secondary">
-                  Log In
-                </a>
-              </div>
-            @endauth
+            <!-- .top-links end -->
+          </div>
+
+          <div class="col-12 col-lg-6 col-md-8">
+            <!-- Top Links
+          ============================================= -->
+            <div class="top-links">
+              <ul class="top-links-container">
+                <li class="px-1 top-links-item ls-2">
+                  <a href="/">Home</a>
+                </li>                
+                <!-- <li class="px-1 top-links-item ls-2">
+                  <a href="#">Contact</a>
+                </li> -->
+                <li class="px-1 top-links-item ls-2">
+                  <a href="/faqs">FAQs</a>
+                </li>
+              </ul>
+            </div>
+            <!-- .top-links end -->
+          </div>
+
+          <div class="col-12 col-lg-3 col-md-2">
+            <!-- Top Social
+          ============================================= -->
+            <ul
+              id="top-social"
+              class="justify-content-center justify-content-lg-end"
+            >
+              <li>
+                <a
+                  href="https://t.me/TopBottomSignal"
+                  target="_blank"
+                  class="h-bg-telegram"
+                  ><span class="ts-icon"
+                    ><i class="fa-brands fa-telegram"></i></span
+                  ><span class="ts-text">Telegram Signal Free</span></a
+                >
+              </li>
+            </ul>
+            <!-- #top-social end -->
           </div>
         </div>
       </div>
-    </nav>
+    </div>
+    <!-- #top-bar end -->
 
-    {{ $slot }}
-  </main>
+    <!-- Header
+  ============================================= -->
+    <header id="header" class="transparent-header dark">
+      <div id="header-wrap">
+        <div class="container">
+          <div class="header-row justify-content-lg-between">
+            <!-- Logo
+          ============================================= -->
+            <div id="logo" class="me-lg-0">
+              <a href="/">
+                <img
+                  class="logo-default"
+                  srcset="
+                  build/assets/all/images/logo-trading-journey.png,
+                  build/assets/all/images/logo-trading-journey.png 2x
+                  "
+                  src="build/assets/all/images/logo-trading-journey.png"
+                  alt="Trading Journey Logo"
+                />
+                <img
+                  class="logo-dark"
+                  srcset="
+                  build/assets/all/images/logo-trading-journey.png,
+                  build/assets/all/images/logo-trading-journey.png 2x
+                  "
+                  src="build/assets/all/images/logo-trading-journey.png"
+                  alt="Trading Journey Logo"
+                />
+              </a>
+            </div>
+            <!-- #logo end -->
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+            <div class="header-misc">
+              <!-- Top Search
+            ============================================= -->
+              {{-- <div id="top-search" class="header-misc-icon">
+                <a href="#" id="top-search-trigger"
+                  ><i class="uil uil-search"></i><i class="bi-x-lg"></i
+                ></a>
+              </div> --}}
+              <!-- #top-search end -->
+
+              <!-- Top Cart
+            ============================================= -->
+              {{-- <div id="top-cart" class="header-misc-icon">
+                <a href="#" id="top-cart-trigger"
+                  ><i class="uil uil-shopping-bag"></i
+                  ><span class="top-cart-number">5</span></a
+                >
+                <div class="top-cart-content">
+                  <div class="top-cart-title">
+                    <h4>Shopping Cart</h4>
+                  </div>
+                  <div class="top-cart-items">
+                    <div class="top-cart-item">
+                      <div class="top-cart-item-image">
+                        <a href="#"
+                          ><img
+                            src="build/assets/all/images/shop/small/1.jpg"
+                            alt="Blue Round-Neck Tshirt"
+                        /></a>
+                      </div>
+                      <div class="top-cart-item-desc">
+                        <div class="top-cart-item-desc-title">
+                          <a href="#">Blue Round-Neck Tshirt with a Button</a>
+                          <span class="top-cart-item-price d-block"
+                            >$19.99</span
+                          >
+                        </div>
+                        <div class="top-cart-item-quantity">x 2</div>
+                      </div>
+                    </div>
+                    <div class="top-cart-item">
+                      <div class="top-cart-item-image">
+                        <a href="#"
+                          ><img
+                            src="build/assets/all/images/shop/small/6.jpg"
+                            alt="Light Blue Denim Dress"
+                        /></a>
+                      </div>
+                      <div class="top-cart-item-desc">
+                        <div class="top-cart-item-desc-title">
+                          <a href="#">Light Blue Denim Dress</a>
+                          <span class="top-cart-item-price d-block"
+                            >$24.99</span
+                          >
+                        </div>
+                        <div class="top-cart-item-quantity">x 3</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="top-cart-action">
+                    <span class="top-checkout-price">$114.95</span>
+                    <a href="#" class="m-0 button button-3d button-small"
+                      >View Cart</a
+                    >
+                  </div>
+                </div>
+              </div> --}}
+              <!-- #top-cart end -->
+            </div>
+
+            <!--New-->
+            <!-- Primary Navigation icon in mobile ============================================= -->
+            <div class="primary-menu-trigger">
+              <button
+                class="cnvs-hamburger"
+                type="button"
+                title="Open Mobile Menu"
+              >
+                <span class="cnvs-hamburger-box"
+                  ><span class="cnvs-hamburger-inner"></span
+                ></span>
+              </button>
+            </div>
+
+            <!-- Primary Navigation
+      ============================================= -->
+            <nav class="primary-menu">
+              <ul class="menu-container">
+                <li class="menu-item current">
+                  <a class="menu-link" href="/"><div>Home</div></a>
+                </li>
+                <li class="menu-item">
+                  <a class="menu-link" href="#"><div>Expert Advisor</div></a>
+                  <ul class="sub-menu-container">
+                    <li class="menu-item">
+                      <a class="menu-link" href="/euro-swing-master"><div>Euro Swing Master</div></a>
+                    </li>
+                    <li class="menu-item">
+                      <a class="menu-link" href="/golden-trend"><div>Golden Trend</div></a>
+                    </li>
+                  </ul>
+                </li>                
+                <div class="morph-marker"></div>
+              </ul>
+            </nav>
+            <!-- #primary-menu end -->
+
+            <form class="top-search-form" action="#" method="get">
+              <input
+                type="text"
+                name="q"
+                class="form-control"
+                value=""
+                placeholder="Type &amp; Hit Enter.."
+                autocomplete="off"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="header-wrap-clone"></div>
+    </header>
+    <!-- #header end -->
+
+    <!-- Content
+  ============================================= -->
+    <section
+      id="content"
+      style="
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.95),
+            rgba(0, 0, 0, 0.6)
+          ),
+          url('build/assets/all/images/blocks/preview/hero-10/main.jpg') no-repeat center /
+            cover;
+      "
+    >
+          <div class="py-0 content-wrap dark">
+              <div class="text-center row justify-content-center align-items-center min-vh-100">                  
+                  <h1 class="display-1 fw-bold">Industry-leading 
+                      <div class="text-black badge bg-hijau-stabilo" style="width: 33rem;">
+                        Expert Advisors 
+                      </div>
+                      For <b></b>
+                      MetaTrader 4/5 <b></b>                        
+                  </h1>          
+                                            
+              </div>                
+              <div class="row">
+                <div class="col-6">
+                  <div class="p-1 center"><img src="build/assets/all/images/mql5.webp" alt="..."></div>
+                </div>
+                <div class="col-6">
+                  <div class="p-1 center"><img src="build/assets/all/images/mt4.webp" alt="..."></div>
+                </div>
+                <div class="col-6">
+                  <div class="p-1 center"><img src="build/assets/all/images/mt5-logo3.webp" alt="..."></div>
+                </div>
+                <div class="col-6">
+                  <div class="p-1 center"><img src="build/assets/all/images/myfxbook.webp" alt="..."></div>
+                </div>
+              </div>                                      
+          </div>  
+                 
+      </div>
+      <!-- #blade content start -->
+      {{ $slot }}  
+      <!-- #blade content end -->
+    </section>
+    <!-- #content end -->
+   
+
+    <!-- Footer  ========================= -->
+    <footer id="footer" class="dark">
+      <div class="container">
+        <!-- Footer Widgets
+      ============================================= -->
+        <div class="footer-widgets-wrap">
+          <div class="row col-mb-50">
+            <div class="col-lg-8">
+              <div class="row col-mb-50">
+                <div class="col-md-4">
+                  <div class="widget">                    
+
+                    <p>
+                      Industry-leading   <strong>Expert Advisors</strong>
+                      <strong>For MetaTrader 4</strong> &amp;
+                      <strong>MetaTrader 5</strong>
+                    </p>
+
+                    <div
+                      style="
+                        background: url('build/assets/all/images/world-map.png') no-repeat
+                          center center;
+                        background-size: 100%;
+                      "
+                    >                      
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="widget widget_links">
+                    <h4>Jump In</h4>
+
+                    <ul>
+                      <li>
+                        <a href="/"
+                          >Home</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="/euro-swing-master"
+                          >Euro Swing Master EA</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="/golden-trend"
+                          >Golden Trend EA</a
+                        >
+                      </li>
+                      <li>
+                        <a href="/faqs"
+                          >FAQs</a
+                        >
+                      </li>                        
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="col-md-4">                  
+                  <div class="counter counter-small">
+                    <span
+                      data-from="0"
+                      data-to="100"
+                      data-refresh-interval="80"
+                      data-speed="3000"
+                      data-comma="true"
+                    ></span>
+                  </div>
+                  <h5 class="mb-0">Clients</h5>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="row col-mb-50">
+                <div class="col-md-4 col-lg-12">
+                  <div class="widget">
+                    <div class="row col-mb-30">
+                      <div class="col-lg-6">                        
+                      </div>                      
+                    </div>
+                  </div>
+                </div>          
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- .footer-widgets-wrap end -->
+      </div>
+
+       <!-- Copyrights
+    ============================================= -->
+    <div id="copyrights">
+      <div class="container">
+        <div class="row col-mb-30">
+          <div class="text-center col-md-6 text-md-start">
+            Copyrights &copy; 2023 All Rights Reserved by TradingJourney.Id.<br />
+            <div class="copyright-links">
+              <a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a>
+            </div>
+          </div>
+
+          <div class="text-center col-md-6 text-md-end">
+            <div class="mb-2 d-flex justify-content-center justify-content-md-end">              
+              <a href="https://t.me/TopBottomSignal" class="border-transparent social-icon si-small h-bg-telegram">
+                <i class="fa-brands fa-telegram"></i>
+                <i class="fa-brands fa-telegram"></i>
+              </a>
+            </div>
+
+            <i class="bi-envelope"></i> info@tradingjourney.id            
+          </div>
+          
+        </div>
+        <div class="text-center col-md-12 text-md-start">
+          Disclaimer<br />
+          The information provided on this website is general in nature only and does not constitute personal financial advice. Before acting on any information on this website you should consider the appropriateness of the information having regard to your objectives, financial situation and needs. Investing in CFDs and Margin FX Contracts carries significant risks and is not suitable for all investors. You may lose more than your initial deposit. You don’t own, or have, any interest in the underlying assets. We recommend that you seek independent advice and ensure fully understand the risks involved before trading. It is important that you read and consider disclosure documents before you acquire any product listed on the website.
+        </div>
+      </div>
+    </div>
+    <!-- #copyrights end -->
+    </footer>
+    <!-- #footer end -->
+  </div>
+  <!-- #wrapper end -->
+
+  <!-- Go To Top
+	============================================= -->
+  <div id="gotoTop" class="uil uil-angle-up"></div>
+<!-- JavaScripts
+	============================================= -->
+  <script src="build/assets/all/js/jquery.js"></script>
+  <script src="build/assets/all/js/functions.js"></script>  
+  <script src="build/assets/all/js/plugins.counter.js"></script>
+  <script src="build/assets/all/js/plugins.bootstrap.js"></script>
+  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+  <!--  Placeholder JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.7/holder.min.js"></script>
+
   <script>
-    AOS.init({
-      once: true,
-      duration: 300,
-      easing: 'ease-out'
-    });
-  </script>
+    jQuery(window).on("load", function () {
+      jQuery(".primary-menu").each(function () {
+        let menuEl = jQuery(this),
+          marker = menuEl.find(".morph-marker"),
+          current = menuEl.find(".current");
 
-  <script src="{{ url('js/script.js') }}"></script>
+        // Initialize the marker position and the active class
+        current.addClass("active");
+
+        marker.css({
+          // Place the marker in the middle of the border
+          bottom: -(marker.height() / 2),
+          left: current.position().left,
+          width: current.outerWidth(),
+        });
+
+        if (Modernizr.csstransitions) {
+          // console.log("using css3 transitions");
+          menuEl.find(".menu-item").mouseover(function () {
+            var self = jQuery(this),
+              offsetLeft = self.position().left,
+              // Use the element under the pointer OR the current page item
+              width = self.outerWidth() || current.outerWidth(),
+              // Ternary operator, because if using OR when offsetLeft is 0, it is considered a falsy value, thus causing a bug for the first element.
+              left =
+                offsetLeft == 0 ? 0 : offsetLeft || current.position().left;
+            // Play with the active class
+            menuEl.find(".active").removeClass("active");
+            self.addClass("active");
+            marker.css({
+              left: left,
+              width: width,
+            });
+          });
+
+          // When the mouse leaves the menu
+          menuEl.find(".menu-container").mouseleave(function () {
+            // remove all active classes, add active class to the current page item
+            menuEl.find(".active").removeClass("active");
+            current.addClass("active");
+            // reset the marker to the current page item position and width
+            marker.css({
+              left: current.position().left,
+              width: current.outerWidth(),
+            });
+          });
+        } else {
+          menuEl.find(".menu-item").mouseover(function () {
+            var self = jQuery(this),
+              offsetLeft = self.position().left,
+              // Use the element under the pointer OR the current page item
+              width = self.outerWidth() || current.outerWidth(),
+              // Ternary operator, because if using OR when offsetLeft is 0, it is considered a falsy value, thus causing a bug for the first element.
+              left =
+                offsetLeft == 0 ? 0 : offsetLeft || current.position().left;
+            // Play with the active class
+            menuEl.find(".active").removeClass("active");
+            self.addClass("active");
+            marker.stop().animate(
+              {
+                left: left,
+                width: width,
+              },
+              300
+            );
+          });
+
+          // When the mouse leaves the menu
+          menuEl.find(".menu-container").mouseleave(function () {
+            // remove all active classes, add active class to the current page item
+            menuEl.find(".active").removeClass("active");
+            current.addClass("active");
+            // reset the marker to the current page item position and width
+            marker.stop().animate(
+              {
+                left: current.position().left,
+                width: current.outerWidth(),
+              },
+              300
+            );
+          });
+        }
+      });
+    });
+  </script> 
 
 </body>
 

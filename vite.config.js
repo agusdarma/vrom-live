@@ -48,7 +48,7 @@ export default defineConfig(({ command, mode }) => {
       viteStaticCopy({
         targets: [
           {
-            src: 'resources/js/sweetalert2.all.min.js',
+            src: ['resources/js/sweetalert2.all.min.js','resources/all'], 
             dest: 'assets',
           }
         ]

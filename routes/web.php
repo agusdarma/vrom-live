@@ -11,6 +11,9 @@ use App\Http\Controllers\Admin\TypeController as AdminTypeController;
 use App\Http\Controllers\Admin\BrandController as AdminBrandController;
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashBoardController;
+use App\Http\Controllers\Front\EuroSwingMasterController;
+use App\Http\Controllers\Front\FaqsController;
+use App\Http\Controllers\Front\GoldenTrendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +28,9 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashBoardController;
 
 Route::name('front.')->group(function () {
     Route::get('/', [LandingController::class, 'index'])->name('index');
+    Route::get('/euro-swing-master', [EuroSwingMasterController::class, 'index'])->name('index');
+    Route::get('/golden-trend', [GoldenTrendController::class, 'index'])->name('index');
+    Route::get('/faqs', [FaqsController::class, 'index'])->name('index');
     Route::get('/detail/{slug}', [DetailController::class, 'index'])->name('detail');
 
     Route::get('/payment/success', [PaymentController::class, 'success'])->name('payment.success');

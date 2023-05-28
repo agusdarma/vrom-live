@@ -1,0 +1,58 @@
+/* ----------------------------------------------------------------
+	Custom CSS
+
+	Add all your Custom Styled CSS here for New Styles or
+	Overwriting Default Theme Styles for Better Handling Updates
+-----------------------------------------------------------------*/
+
+/* Social Icons - colors
+-----------------------------------------------------------------*/
+.bg-telegram,
+.h-bg-telegram:hover {
+  background-color: var(--cnvs-color-waze) !important;
+}
+
+.bg-primary {
+  --bs-bg-opacity: 1;
+  background-color: rgba(
+    var(--bs-hijau-stabilo),
+    var(--bs-bg-opacity)
+  ) !important;
+}
+
+.bg-hijau-stabilo {
+  --bs-bg-opacity: 1;
+  background-color: rgba(
+    var(--bs-hijau-stabilo),
+    var(--bs-bg-opacity)
+  ) !important;
+}
+
+.border-hijau-stabilo {
+  --bs-border-opacity: 1;
+  border-color: rgba(
+    var(--bs-hijau-stabilo),
+    var(--bs-border-opacity)
+  ) !important;
+}
+
+.text-hijau-stabilo {
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-hijau-stabilo), var(--bs-text-opacity)) !important;
+}
+
+.bg-golden {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-gold), var(--bs-bg-opacity)) !important;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 100% 100%;
+  background-color: black;
+}
