@@ -30,10 +30,17 @@ class MidtransCallbackController extends Controller
         $orderId = $notification->order_id;
         $grossAmount = $notification->gross_amount;
         $statusCode = $notification->status_code;
+        $signatureKeyHost = $notification->signature_key;
         $inputMidtrans = $orderId . $statusCode . $grossAmount . $serverKey;
         $signatureMidtrans = openssl_digest($inputMidtrans, 'sha512');
         Log::info('midtrans: {signatureMidtrans}', ['signatureMidtrans' => $signatureMidtrans]);
+        Log::info('signatureKeyHost: {signatureKeyHost}', ['signatureKeyHost' => $signatureKeyHost]);
+        Log::info('awal orderId: {orderId}', ['orderId' => $orderId]);
 
+        $orderId_arr = explode ("-", $orderId); 
+        Log::info('explode orderId: {orderId}', ['orderId' => $orderId_arr[1]]);
+        $orderId = $orderId_arr[1];
+        Log::info('akhir orderId: {orderId}', ['orderId' => $orderId]);
         // $orderId = "1111";
         // $statusCode = "200";
         // $grossAmount = "100000.00";
@@ -46,7 +53,7 @@ class MidtransCallbackController extends Controller
 
 
         // Cari transaksi berdasarkan ID
-        $booking = Booking::findOrFail(explode($orderId, '-')[1]);
+        $booking = Booking::where('id', $orderId)->first();
         $orderIdDb = $booking->id;
         $grossAmountDb = $booking->total_price;
         $inputDb = $orderIdDb . $statusCode . $grossAmountDb . $serverKey;
