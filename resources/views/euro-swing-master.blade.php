@@ -46,7 +46,102 @@ intelligence makes decisions based on the past 400 or 500 candles</p>
                       <a href="{{ route('front.checkout', $item->slug) }}" class="text-black button button-3d button-large bg-hijau-stabilo">Rent Now</a>
 
                     </div>
-                  </div>                  
+                  </div>  
+                  <div class="mt-6 fancy-title title-border title-center">
+                    <h3>Euro Swing Master Rates</h3>
+                  </div>
+        
+                  <div class="mb-4 row pricing col-mb-30 g-0">
+        
+                    <div class="col-md-6 col-lg-3">
+        
+                      <div class="text-center pricing-box">
+                        <div class="pricing-title text-uppercase title-sm">
+                          <h3>Rate 1 Month</h3>
+                        </div>
+                        <div class="pricing-price">
+                          <span class="price-unit">&dollar;</span>{{ $price1Month }}<span class="price-tenure">/mo</span>
+                        </div>
+                        <div class="pricing-features">
+                          <ul>
+                            <li>Included <strong>VPS</strong></li>
+                            <li>Telegram &amp; Email Support</li>                                                        
+                          </ul>
+                        </div>
+                        <div class="px-4 pricing-action">
+                          <a href="{{ route('front.checkout', $item->slug) }}" class="btn btn-danger w-100 btn-lg">Rent Now</a>
+                        </div>
+                      </div>
+        
+                    </div>
+        
+                    <div class="col-md-6 col-lg-3">
+        
+                      <div class="text-center pricing-box">
+                        <div class="pricing-title text-uppercase title-sm">
+                          <h3>Rate 3 Months</h3>
+                        </div>
+                        <div class="pricing-price">
+                          <span class="price-unit">&dollar;</span>{{ $price3Month }}<span class="price-tenure">/mo</span>
+                        </div>
+                        <div class="pricing-features">
+                          <ul>
+                            <li>Included <strong>VPS</strong></li>
+                            <li>Telegram &amp; Email Support</li>                                                        
+                          </ul>
+                        </div>
+                        <div class="px-4 pricing-action">
+                          <a href="{{ route('front.checkout', $item->slug) }}" class="btn btn-danger w-100 btn-lg bg-color border-color">Rent Now</a>
+                        </div>
+                      </div>
+        
+                    </div>
+        
+                    <div class="col-md-6 col-lg-3">
+        
+                      <div class="text-center pricing-box">
+                        <div class="pricing-title text-uppercase title-sm">
+                          <h3>Rate 6 Months</h3>
+                        </div>
+                        <div class="pricing-price">
+                          <span class="price-unit">&dollar;</span>{{ $price6Month }}<span class="price-tenure">/mo</span>
+                        </div>
+                        <div class="pricing-features">
+                          <ul>
+                            <li>Included <strong>VPS</strong></li>
+                            <li>Telegram &amp; Email Support</li>                                                        
+                          </ul>
+                        </div>
+                        <div class="px-4 pricing-action">
+                          <a href="{{ route('front.checkout', $item->slug) }}" class="btn btn-danger w-100 btn-lg">Rent Now</a>
+                        </div>
+                      </div>
+        
+                    </div>
+        
+                    <div class="col-md-6 col-lg-3">
+        
+                      <div class="text-center pricing-box">
+                        <div class="pricing-title text-uppercase title-sm">
+                          <h3>Rate 12 Months</h3>
+                        </div>
+                        <div class="pricing-price">
+                          <span class="price-unit">&dollar;</span>{{ $price12Month }}<span class="price-tenure">/mo</span>
+                        </div>
+                        <div class="pricing-features">
+                          <ul>
+                            <li>Included <strong>VPS</strong></li>
+                            <li>Telegram &amp; Email Support</li>                                                        
+                          </ul>
+                        </div>
+                        <div class="px-4 pricing-action">
+                          <a href="{{ route('front.checkout', $item->slug) }}" class="btn btn-danger w-100 btn-lg bg-color border-color">Rent Now</a>
+                        </div>
+                      </div>
+        
+                    </div>
+        
+                  </div>             
                   <!--Shape Divider--> 
                   <div class="p-0 mt-5 section min-vh-75">
                     <img

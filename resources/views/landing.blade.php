@@ -30,10 +30,10 @@
             <div class="divider divider-right"><i class="bi-heart-fill"></i></div>
             <div class="row justify-content-center">
               <div class="col-md-10">                        
-                <p class="mb-4 text-black text-uppercase fw-semibold ls-1 font-primary">Get 20% off on first rent</p>
+                <p class="mb-4 text-black text-uppercase fw-semibold ls-1 font-primary">Get 10% off on first rent</p>
                 <h1 class="display-3 fw-normal" style="letter-spacing: -1px;">The secret is to auto-trade with a robot that is not only profitable, <div class="text-black badge bg-hijau-stabilo" style="width: 24rem;">
                     but also stable. 
-                  </div> Start Trading With Expert Advisor for <span class="nocolor text-decoration-underline fw-bold" style="text-underline-offset: 5px;">$4</span> only!</h1>
+                  </div> Start Trading With Expert Advisor for <span class="nocolor text-decoration-underline fw-bold" style="text-underline-offset: 5px;">$5/month</span> only!</h1>
                 <p class="mx-auto mb-5 op-07 mw-xs">How many <b>“+50% a month”</b> Expert Advisors have you seen being aggressively advertised? How many of those ended up blowing your account in a few months?</p>
                 <p class="mx-auto mb-5 op-07 mw-xs">There are lots of EAs that can give juicy returns in the short term, but don’t be fooled. It is no secret: hundreds of studies show that in 90 days or less, 94% of retail traders lose all their initial investments</p>
                 <p class="mx-auto mb-5 op-07 mw-xs">That means that only the remaining <b>6%</b> is able to make money and sustain their profits after a three months period</p>

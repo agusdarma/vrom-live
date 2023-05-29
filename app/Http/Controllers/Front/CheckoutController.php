@@ -13,35 +13,51 @@ class CheckoutController extends Controller
 {
     public function index(Request $request, $slug)
     {
+        $controllerName = Route::currentRouteAction(); // string
         $item = Item::with(['type', 'brand'])->whereSlug($slug)->firstOrFail();
 
+        $priceBase = $item->price;
+        $price1Month = $priceBase*1;
+        $price3Month = ($priceBase*3)*0.9/3;
+        $price6Month = ($priceBase*6)*0.8/6;
+        $price12Month = ($priceBase*12)*0.5/12;
+        // dd($priceBase);
+        Log::info('[{controllerName}] priceBase: {priceBase}, price1Month: {price1Month}, price3Month: {price3Month} , price6Month: {price6Month}
+        , price12Month: {price12Month}  ',['priceBase' => $priceBase,'price1Month' => $price1Month,'price3Month' => $price3Month,
+        'price6Month' => $price6Month,'price12Month' => $price12Month,'controllerName' => $controllerName]);
+
+
         return view('checkout', [
-            'item' => $item
+            'item' => $item,
+            'price1Month' => $price1Month,
+            'price3Month' => $price3Month,
+            'price6Month' => $price6Month,
+            'price12Month' => $price12Month,
         ]);
     }
 
     public function store(Request $request, $slug)
     {
-        // Validate the request
+        // dd($request);
+        $controllerName = Route::currentRouteAction(); // string
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'noHp' => 'required',
-            'waktuSewa' => 'required'
-            // 'start_date' => 'required',
-            // 'end_date' => 'required',
-            // 'address' => 'required',
-            // 'city' => 'required',
-            // 'zip' => 'required'
+            'no_hp' => 'required',
+            'rental_time' => 'required',
+            'telegram_id' => 'required',
+            'item_name' => 'required',
+
         ]);
 
-        $waktuSewa = $request->waktuSewa;
-        // Log::info('waktuSewa: {waktuSewa}', ['waktuSewa' => $waktuSewa]);
+        $name = $request->name;               
+        $email = $request->email;               
+        $no_hp = $request->no_hp;               
+        $rental_time = $request->rental_time;               
+        $telegram_id = $request->telegram_id;               
+        $item_name = $request->item_name;   
 
-        $route = Route::current(); // Illuminate\Routing\Route
-        $name = Route::currentRouteName(); // string
-        $action = Route::currentRouteAction(); // string
-        Log::info('[{action}] waktuSewa: {waktuSewa}',['waktuSewa' => $waktuSewa,'action' => $action]);
+        Log::info('[{controllerName}] rental_time: {rental_time}',['rental_time' => $rental_time,'controllerName' => $controllerName]);
 
         // Format start_date and end_date from dd mm yyyy to timestamp
         // $start_date = Carbon::createFromFormat('d m Y', now());
@@ -52,25 +68,42 @@ class CheckoutController extends Controller
 
         // Get the item
         $item = Item::whereSlug($slug)->firstOrFail();
+        // Calculate the total price       
+        $priceBase = $item->price;
+        $price1Month = $priceBase*1;
+        $price3Month = ($priceBase*3)*0.9;
+        $price6Month = ($priceBase*6)*0.8;
+        $price12Month = ($priceBase*12)*0.5;
+        
+        switch ($rental_time) {
+            case "1":
+                $total_price = $price1Month;
+              break;
+            case "3":
+                $total_price = $price3Month;
+              break;
+            case "6":
+                $total_price = $price6Month;
+              break;
+            case "12":
+                $total_price = $price12Month;                
+              break;            
+          }
 
-        // Calculate the total price
-        // $total_price = $days * $item->price;
-        $total_price = $waktuSewa * $item->price;
         Log::info('total_price: {total_price}', ['total_price' => $total_price]);
-
-        // Add 10% tax
-        // $total_price = $total_price + ($total_price * 0.1);
 
         // Create a new booking
         $booking = $item->bookings()->create([
-            'name' => $request->name,
-            // 'start_date' => $start_date,
-            // 'end_date' => $end_date,
-            'address' => $request->address,
-            'city' => $request->city,
-            'zip' => $request->zip,
+            'name' => $name,
+            'item_name' => $item_name,
+            'rental_price' => $priceBase,
+            'rental_time' => $rental_time,
+            'email' => $email,
+            'no_hp' => $no_hp,
+            'telegram_id' => $telegram_id,
+            'total_price' => $total_price,                        
             'user_id' => auth()->user()->id,
-            'total_price' => $total_price
+            'item_id' => $item->id
         ]);
 
         return redirect()->route('front.payment', $booking->id);

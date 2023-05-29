@@ -12,8 +12,12 @@ class Booking extends Model
 
     protected $fillable = [
         'name',
+        'item_name',
+        'rental_price',
+        'rental_time',        
         'email',
         'no_hp',
+        'telegram_id',
         'status',
         'payment_method',
         'payment_status',
