@@ -17,41 +17,69 @@
                   method="post">
                   @csrf
                   @method('post')
-                  <div class="row g-4">            
+                  <div class="row g-4">   
+                    <div class="mb-5 text-center col-12">
+                      <h6 class="font-body text-uppercase ls-3">Customer Information</h6>                  
+                    </div>         
                     <div class="col-12">
+                      <div class="row g-4">
                         <div class="col-md-6">
-                            <img src="{{ url($booking->item->thumbnail)}}" alt="logo euro swing master">
-                          </div>
-                      <div class="row g-4">                        
-                        <div class="col-md-6">
-                            <label for="name">Item<small class="text-danger"></small></label>
-                            <input disabled="true" type="text" id="name" name="name" value="{{ $booking->item->name }}" class="form-control required">                            
-                          </div>
-                        <div class="col-md-6">
-                          <label for="name">Name<small class="text-danger">*</small></label>
-                          <input disabled="true" type="text" id="name" name="name" value="{{ $booking->name }}" class="form-control required">
+                          <label for="name">Name</label>
+                          <input disabled="true" type="text" id="name" name="name" value="{{ $booking->name }}" class="form-control required" placeholder="Enter your name">
                         </div>
                         <div class="col-md-6">
                           <label for="email">Email</label>
-                          <input disabled="true" type="text" id="email" name="email" value="{{ Auth::user()->email }}" class="form-control">
+                          <input disabled="true" type="text" id="email" name="email" value="{{ $booking->email }}" class="form-control" placeholder="Enter your email">
                         </div>
                         <div class="col-md-6">
-                          <label for="noHp">Handphone No<small class="text-danger">*</small></label>
-                          <input disabled="true" type="text" id="noHp" name="noHp" value="{{ Auth::user()->phone }}" class="form-control required">
+                          <label for="no_hp">Handphone No</label>
+                          <input disabled="true" type="text" id="no_hp" name="no_hp" value="{{ $booking->no_hp }}" class="form-control required" placeholder="Enter your handphone no">
                         </div> 
                         <div class="col-md-6">
-                          <label for="waktuSewa">Rent For<small class="text-danger">*</small></label>
-                          <input disabled="true" type="text" id="waktuSewa" value="{{ Auth::user()->phone }}" class="form-control required">
+                          <label for="telegram_id">Telegram Id</label>
+                          <input disabled="true" type="text" id="telegram_id" name="telegram_id" value="{{ $booking->telegram_id }}" class="form-control required" placeholder="ex: https://t.me/TradingJourneyId">
+                        </div> 
+                      </div>                  
+                    </div> 
+                    <div class="mb-5 text-center col-12">
+                      <h6 class="font-body text-uppercase ls-3">Item Information</h6>
+                    </div>        
+                    <div class="col-12">
+                      <div class="row g-4">
+                        <div class="p-4 col-md-5 d-inline-flex" style="min-height: 350px">
+                          <img src="{{ $booking->item->thumbnail }}" alt="logo euro swing master">
+                        </div>
+                        <div class="col-md-6">                     
+                          
                         </div>
                         <div class="col-md-6">
-                            <label for="paymentMethod">Payment Method<small class="text-danger">*</small></label>
-                            <select id="paymentMethod" name="payment_method" class="form-select required">
-                              <option value="" disabled selected>Select Payment Method</option>
-                              <option value="midtrans">Midtrans</option>                              
-                            </select>
-                          </div>
+                          <label for="item_name">Item Name</label>
+                          <input type="text" id="item_name" name="item_name" value="{{ $booking->item_name }}" class="form-control required" placeholder="Enter your Name">
+                        </div>                                       
+                        <div class="col-md-6">
+                          <label for="rental_time">Rent For</label>
+                          <select id="rental_time" name="rental_time" class="form-select required">
+                            <option value="" disabled selected>{{ $booking->rental_time }} months</option>                            
+                          </select>
+                        </div>
                       </div>                  
-                    </div>                
+                    </div> 
+                    <div class="mb-5 text-center col-12">
+                      <h6 class="font-body text-uppercase ls-3">Payment Information</h6>
+                    </div>   
+                    <div class="col-12">
+                      <div class="row g-4">
+                        <div class="col-md-6">
+                          <label for="payment_method">Payment Method<small class="text-danger">*</small></label>
+                          <select id="payment_method" name="payment_method" class="form-select required">
+                            <option value="" disabled selected>Select Payment Method</option>
+                            <option value="midtrans">BCA Virtual Account</option>
+                            <option value="midtrans">Qris</option>
+                            <option value="midtrans">Gopay</option>                            
+                          </select>
+                        </div>
+                      </div>
+                    </div>             
                     <div class="col-12">
                       <button type="submit" id="checkoutButton" class="btn btn-secondary w-100 btn-lg">Checkout</button>
                     </div>      
