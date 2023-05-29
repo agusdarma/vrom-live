@@ -18,6 +18,7 @@ class Booking extends Model
         'email',
         'no_hp',
         'telegram_id',
+        'discount',
         'status',
         'payment_method',
         'payment_status',

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use Carbon\Carbon;
 use App\Models\Item;
+use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
@@ -66,8 +67,7 @@ class CheckoutController extends Controller
             // ->withInput();
             return redirect()->route('front.checkout', $slug)->with('error', $validator->errors()->first());                                             
         }
-
-
+        
         $name = $request->name;               
         $email = $request->email;               
         $no_hp = $request->no_hp;               
@@ -107,10 +107,19 @@ class CheckoutController extends Controller
                 $total_price = $price12Month;                
               break;            
           }
-
+        $discount = "";
         Log::info('total_price: {total_price}', ['total_price' => $total_price]);
-
+        
+        $booking = Booking::where('email', $email)->first();
+        // dd($booking);
+        if ($booking == null) {
+            $total_price = $total_price*0.9;
+            Log::info('Total_price after discount first rented: {total_price}', ['total_price' => $total_price]);
+            $discount = "ada";
+         }
+         Log::info('discount: {discount}', ['discount' => $discount]);
         // Create a new booking
+        
         $booking = $item->bookings()->create([
             'name' => $name,
             'item_name' => $item_name,
@@ -121,7 +130,8 @@ class CheckoutController extends Controller
             'telegram_id' => $telegram_id,
             'total_price' => $total_price,                        
             'user_id' => auth()->user()->id,
-            'item_id' => $item->id
+            'item_id' => $item->id,
+            'discount' => $discount,
         ]);
 
         return redirect()->route('front.payment', $booking->id)->with('success', 'Checkout successful, please confirm your rented before payment.');

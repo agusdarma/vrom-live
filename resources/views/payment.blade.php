@@ -63,9 +63,13 @@
                           </select>
                         </div>
                         <div class="col-md-6">
+                          @if($booking->discount =='ada')         
+                          <label for="total_price">Total Price - Discount First Rent: </label>                                                
+                          @else
                           <label for="total_price">Total Price: </label>                                                
-                          <div class="pricing-price">
-                            <span class="price-unit">&dollar;</span>{{ $booking->total_price }}<span class="price-tenure"></span>
+                          @endif                          
+                          <div class="pricing-price">                                                        
+                              <span class="price-unit">&dollar;</span>{{ $booking->total_price }}<span class="price-tenure"></span>                                                                                  
                           </div>
                          
                         </div> 
