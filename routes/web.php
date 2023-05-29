@@ -30,7 +30,7 @@ Route::name('front.')->group(function () {
     Route::get('/', [LandingController::class, 'index'])->name('index');
     Route::get('/euro-swing-master/{slug}', [EuroSwingMasterController::class, 'index'])->name('euro');
     Route::get('/golden-trend/{slug}', [GoldenTrendController::class, 'index'])->name('golden');
-    Route::get('/faqs', [FaqsController::class, 'index'])->name('index');
+    Route::get('/faqs', [FaqsController::class, 'index'])->name('faq');
     Route::get('/detail/{slug}', [DetailController::class, 'index'])->name('detail');
 
     Route::get('/payment/success', [PaymentController::class, 'success'])->name('payment.success');

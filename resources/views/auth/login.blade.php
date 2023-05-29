@@ -62,15 +62,16 @@
 							</div>
 						</div>
 						<div class="accordion-content">
-							<form id="login-form" name="login-form" class="mb-0 row" action="#" method="post">
+							<form id="login-form" name="login-form" class="mb-0 row" action="{{ route('login') }}" method="post">
+								@csrf
 								<div class="col-12 form-group">
-									<label for="login-form-username">Username:</label>
-									<input type="text" id="login-form-username" name="login-form-username" value="" class="form-control">
+									<label for="login-form-username">Email:</label>
+									<input type="text" id="login-form-username" name="email" value="{{ old('email') }}" class="form-control">
 								</div>
 
 								<div class="col-12 form-group">
 									<label for="login-form-password">Password:</label>
-									<input type="password" id="login-form-password" name="login-form-password" value="" class="form-control">
+									<input type="password" id="login-form-password" name="password" value="" class="form-control">
 								</div>
 
 								<div class="col-12 form-group">
