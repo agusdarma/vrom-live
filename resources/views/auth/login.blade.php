@@ -76,7 +76,7 @@
 								<div class="col-12 form-group">
 									<div class="d-flex justify-content-between">
 										<button class="m-0 button button-3d button-black" id="login-form-submit" name="login-form-submit" value="login">Login</button>
-										<a href="#">Forgot Password?</a>
+										<a href="{{ route('password.request') }}">Forgot Password?</a>
 									</div>
 								</div>
 							</form>
