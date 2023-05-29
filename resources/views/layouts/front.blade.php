@@ -230,9 +230,9 @@
             >
               <ul class="top-links-container">
                 <li class="top-links-item">
-                  <a href="#">EN</a>
+                  <a href="{{ route('front.changeLang','EN') }}">EN</a>
                   <ul class="top-links-sub-menu" style="width: 53px; left: 0">
-                    <li class="top-links-item"><a href="#">ID</a></li>
+                    <li class="top-links-item"><a href="{{ route('front.changeLang','ID') }}">ID</a></li>
                   </ul>
                 </li>
               </ul>

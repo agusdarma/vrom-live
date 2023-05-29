@@ -29,7 +29,8 @@
             </div>                    
             <div class="divider divider-right"><i class="bi-heart-fill"></i></div>
             <div class="row justify-content-center">
-              <div class="col-md-10">                        
+              <div class="col-md-10">          
+                <h1>{{ __('messages.title') }}</h1>         
                 <p class="mb-4 text-black text-uppercase fw-semibold ls-1 font-primary">Get 10% off on first rent</p>
                 <h1 class="display-3 fw-normal" style="letter-spacing: -1px;">The secret is to auto-trade with a robot that is not only profitable, <div class="text-black badge bg-hijau-stabilo" style="width: 24rem;">
                     but also stable. 

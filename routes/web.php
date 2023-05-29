@@ -1,19 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LangController;
+use App\Http\Controllers\Front\FaqsController;
 use App\Http\Controllers\Front\DetailController;
 use App\Http\Controllers\Front\LandingController;
 use App\Http\Controllers\Front\PaymentController;
 use App\Http\Controllers\Front\CheckoutController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Front\GoldenTrendController;
+use App\Http\Controllers\Front\EuroSwingMasterController;
 use App\Http\Controllers\Admin\ItemController as AdminItemController;
 use App\Http\Controllers\Admin\TypeController as AdminTypeController;
 use App\Http\Controllers\Admin\BrandController as AdminBrandController;
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashBoardController;
-use App\Http\Controllers\Front\EuroSwingMasterController;
-use App\Http\Controllers\Front\FaqsController;
-use App\Http\Controllers\Front\GoldenTrendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ use App\Http\Controllers\Front\GoldenTrendController;
 
 Route::name('front.')->group(function () {
     Route::get('/', [LandingController::class, 'index'])->name('index');
+    Route::get('lang/change/{lang}', [LangController::class, 'change'])->name('changeLang');
     Route::get('/euro-swing-master/{slug}', [EuroSwingMasterController::class, 'index'])->name('euro');
     Route::get('/golden-trend/{slug}', [GoldenTrendController::class, 'index'])->name('golden');
     Route::get('/faqs', [FaqsController::class, 'index'])->name('faq');
