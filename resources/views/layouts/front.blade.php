@@ -28,6 +28,8 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ url("build/assets/all/css/custom.css")}}" />
 
+  <script type="text/javascript" src="{{url('/build/assets/sweetalert2.all.min.js')}}"></script>
+
   <!-- Styles -->
   @livewireStyles
 
@@ -642,7 +644,29 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
   <!--  Placeholder JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.7/holder.min.js"></script>
+  {{ $script ?? '' }}
+  {{ $modal ?? '' }}
+  {{-- Sweetalert if error exist --}}
+  @if (session()->has('error'))
+    <script>
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: '{{ session('error') }}',
+      })
+    </script>
+  @endif
 
+  {{-- Sweetalert if success exist --}}
+  @if (session()->has('success'))
+    <script>
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: '{{ session('success') }}',
+      })
+    </script>
+  @endif
   <script>
     jQuery(window).on("load", function () {
       jQuery(".primary-menu").each(function () {

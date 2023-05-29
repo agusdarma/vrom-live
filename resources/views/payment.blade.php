@@ -25,19 +25,19 @@
                       <div class="row g-4">
                         <div class="col-md-6">
                           <label for="name">Name</label>
-                          <input disabled="true" type="text" id="name" name="name" value="{{ $booking->name }}" class="form-control required" placeholder="Enter your name">
+                          <input disabled="true" type="text" id="name" name="name" value="{{ $booking->name }}" class="form-control required">
                         </div>
                         <div class="col-md-6">
                           <label for="email">Email</label>
-                          <input disabled="true" type="text" id="email" name="email" value="{{ $booking->email }}" class="form-control" placeholder="Enter your email">
+                          <input disabled="true" type="text" id="email" name="email" value="{{ $booking->email }}" class="form-control">
                         </div>
                         <div class="col-md-6">
                           <label for="no_hp">Handphone No</label>
-                          <input disabled="true" type="text" id="no_hp" name="no_hp" value="{{ $booking->no_hp }}" class="form-control required" placeholder="Enter your handphone no">
+                          <input disabled="true" type="text" id="no_hp" name="no_hp" value="{{ $booking->no_hp }}" class="form-control required">
                         </div> 
                         <div class="col-md-6">
                           <label for="telegram_id">Telegram Id</label>
-                          <input disabled="true" type="text" id="telegram_id" name="telegram_id" value="{{ $booking->telegram_id }}" class="form-control required" placeholder="ex: https://t.me/TradingJourneyId">
+                          <input disabled="true" type="text" id="telegram_id" name="telegram_id" value="{{ $booking->telegram_id }}" class="form-control required">
                         </div> 
                       </div>                  
                     </div> 
@@ -54,14 +54,22 @@
                         </div>
                         <div class="col-md-6">
                           <label for="item_name">Item Name</label>
-                          <input type="text" id="item_name" name="item_name" value="{{ $booking->item_name }}" class="form-control required" placeholder="Enter your Name">
+                          <input disabled="true" type="text" id="item_name" name="item_name" value="{{ $booking->item_name }}" class="form-control required">
                         </div>                                       
                         <div class="col-md-6">
-                          <label for="rental_time">Rent For</label>
+                          <label for="rental_time">Rental Time</label>
                           <select id="rental_time" name="rental_time" class="form-select required">
                             <option value="" disabled selected>{{ $booking->rental_time }} months</option>                            
                           </select>
                         </div>
+                        <div class="col-md-6">
+                          <label for="total_price">Total Price: </label>                                                
+                          <div class="pricing-price">
+                            <span class="price-unit">&dollar;</span>{{ $booking->total_price }}<span class="price-tenure"></span>
+                          </div>
+                         
+                        </div> 
+                        
                       </div>                  
                     </div> 
                     <div class="mb-5 text-center col-12">
@@ -81,7 +89,7 @@
                       </div>
                     </div>             
                     <div class="col-12">
-                      <button type="submit" id="checkoutButton" class="btn btn-secondary w-100 btn-lg">Checkout</button>
+                      <button type="submit" id="checkoutButton" class="btn btn-primary w-100 btn-lg">Checkout</button>
                     </div>      
                   </div>
                 </form>

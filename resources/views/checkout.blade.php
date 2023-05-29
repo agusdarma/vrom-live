@@ -57,7 +57,7 @@
                       <input type="text" id="item_name" name="item_name" value="{{ $item->name }}" class="form-control required" placeholder="Enter your Name">
                     </div>                                       
                     <div class="col-md-6">
-                      <label for="rental_time">Rent For<small class="text-danger">*</small></label>
+                      <label for="rental_time">Rental Time<small class="text-danger">*</small></label>
                       <select id="rental_time" name="rental_time" class="form-select required">
                         <option value="" disabled selected>Select Rental Time</option>
                         <option value="1">Rent 1 month - {{ $price1Month }}/Month</option>
@@ -69,7 +69,7 @@
                   </div>                  
                 </div>                
                 <div class="col-12">
-                  <button type="submit" id="checkoutButton" class="btn btn-secondary w-100 btn-lg">Checkout</button>
+                  <button type="submit" id="checkoutButton" class="btn btn-primary w-100 btn-lg">Checkout</button>
                 </div>      
               </div>
             </form>

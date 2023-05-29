@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Validator;
 
 class CheckoutController extends Controller
 {
@@ -40,15 +41,32 @@ class CheckoutController extends Controller
     {
         // dd($request);
         $controllerName = Route::currentRouteAction(); // string
-        $request->validate([
+        // $request->validate([
+        //     'name' => 'required',
+        //     'email' => 'required',
+        //     'no_hp' => 'required',
+        //     'rental_time' => 'required',
+        //     'telegram_id' => 'required',
+        //     'item_name' => 'required',
+
+        // ]);
+
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required',
             'no_hp' => 'required',
             'rental_time' => 'required',
             'telegram_id' => 'required',
             'item_name' => 'required',
-
         ]);
+
+        if ($validator->fails()) {
+            // return redirect('post/create')
+            // ->withErrors($validator)
+            // ->withInput();
+            return redirect()->route('front.checkout', $slug)->with('error', $validator->errors()->first());                                             
+        }
+
 
         $name = $request->name;               
         $email = $request->email;               
@@ -106,6 +124,6 @@ class CheckoutController extends Controller
             'item_id' => $item->id
         ]);
 
-        return redirect()->route('front.payment', $booking->id);
+        return redirect()->route('front.payment', $booking->id)->with('success', 'Checkout successful, please confirm your rented before payment.');
     }
 }

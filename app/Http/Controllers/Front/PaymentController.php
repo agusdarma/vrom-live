@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Front;
 
+use Carbon\Carbon;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
 
 class PaymentController extends Controller
 {
@@ -35,6 +36,16 @@ class PaymentController extends Controller
 
     public function update(Request $request, $bookingId)
     {
+        $validator = Validator::make($request->all(), [
+            'payment_method' => 'required',            
+        ]);
+        if ($validator->fails()) {
+            // return redirect('post/create')
+            // ->withErrors($validator)
+            // ->withInput();
+            return redirect()->route('front.payment', $bookingId)->with('error', $validator->errors()->first());                                             
+        }
+
         $booking = Booking::findOrFail($bookingId);
         $booking->payment_method = $request->payment_method;
 
