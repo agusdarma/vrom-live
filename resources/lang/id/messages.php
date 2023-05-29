@@ -6,7 +6,8 @@ return [
 
   
 
-    'title' => 'This is Bahasa Title.',
+    // landing.blade.php
+    'landingText1' => 'Diskon 10% untuk penyewa pertama',
 
   
 

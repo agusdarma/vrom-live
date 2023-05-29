@@ -4,9 +4,9 @@
 
 return [
 
-  
-
-    'title' => 'This is English Language Title.',
+    
+    // landing.blade.php
+    'landingText1' => 'Get 10% off on first rent',
 
   
 

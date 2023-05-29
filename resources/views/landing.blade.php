@@ -29,9 +29,8 @@
             </div>                    
             <div class="divider divider-right"><i class="bi-heart-fill"></i></div>
             <div class="row justify-content-center">
-              <div class="col-md-10">          
-                <h1>{{ __('messages.title') }}</h1>         
-                <p class="mb-4 text-black text-uppercase fw-semibold ls-1 font-primary">Get 10% off on first rent</p>
+              <div class="col-md-10">                
+                <p class="mb-4 text-black text-uppercase fw-semibold ls-1 font-primary">{{ __('messages.landingText1') }}</p>
                 <h1 class="display-3 fw-normal" style="letter-spacing: -1px;">The secret is to auto-trade with a robot that is not only profitable, <div class="text-black badge bg-hijau-stabilo" style="width: 24rem;">
                     but also stable. 
                   </div> Start Trading With Expert Advisor for <span class="nocolor text-decoration-underline fw-bold" style="text-underline-offset: 5px;">$5/month</span> only!</h1>
