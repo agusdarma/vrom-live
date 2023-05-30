@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\App;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -30,7 +31,8 @@ class LanguageManager
 
         if (session()->has('locale')) {
 
-            app()->setLocale(session()->get('locale'));
+            // app()->setLocale(session()->get('locale'));
+            App::setLocale(session()->get('locale'));
         }
 
 

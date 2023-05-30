@@ -57,7 +57,7 @@
 								<i class="accordion-closed fa-solid fa-lock"></i>
 								<i class="accordion-open bi-unlock"></i>
 							</div>
-							<div class="accordion-title">
+							<div id="sini" class="accordion-title">
 								Login to your Account
 							</div>
 						</div>

@@ -728,6 +728,16 @@
         }
       });
     });
+    (function ($) {
+          // Write your jQuery Codes here
+          // $(document).ready() etc. or Plugin Initializations
+          $(document).ready(function () {
+                    // Handler for .ready() called.
+                    $('html, body').animate({
+                        scrollTop: $('#sini').offset().top
+                    }, 'slow');
+                });
+          })(jQuery);
   </script> 
 
 </body>

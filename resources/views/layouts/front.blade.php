@@ -231,14 +231,14 @@
               <ul class="top-links-container">
                 @if(app()->getLocale() =='EN') 
                 <li class="top-links-item">
-                  <a href="{{ route('front.changeLang','EN') }}">EN</a>
+                  <a href="{{ route('front.changeLang','en') }}">EN</a>
                   <ul class="top-links-sub-menu" style="width: 53px; left: 0">
                     <li class="top-links-item"><a href="{{ route('front.changeLang','ID') }}">ID</a></li>
                   </ul>
                 </li>
                 @else
                 <li class="top-links-item">
-                  <a href="{{ route('front.changeLang','ID') }}">ID</a>
+                  <a href="{{ route('front.changeLang','id') }}">ID</a>
                   <ul class="top-links-sub-menu" style="width: 53px; left: 0">
                     <li class="top-links-item"><a href="{{ route('front.changeLang','EN') }}">EN</a></li>
                   </ul>

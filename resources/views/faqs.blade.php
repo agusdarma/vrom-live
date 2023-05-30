@@ -20,7 +20,7 @@
     </div>
     <div class="container bg-white rounded">
 
-      <h3 class="display-6">Got some remaining questions?</h3>
+      <h3 id="sini" class="display-6">Got some remaining questions?</h3>
 
       <p>That's super understandable. Even though the whole point of Expert Advisors is to enjoy trading on auto-pilot, there are some things that need to be done before
 
