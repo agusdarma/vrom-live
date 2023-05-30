@@ -28,11 +28,13 @@ class LanguageManager
            
  
         // return $next($request);
-
+            //dd(session()->get('locale'));
         if (session()->has('locale')) {
 
             // app()->setLocale(session()->get('locale'));
             App::setLocale(session()->get('locale'));
+        }else{
+            App::setLocale('en');
         }
 
 

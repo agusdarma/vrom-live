@@ -229,18 +229,18 @@
               class="top-links d-flex justify-content-center justify-content-lg-start"
             >
               <ul class="top-links-container">
-                @if(app()->getLocale() =='EN') 
+                @if(app()->getLocale() =='en') 
                 <li class="top-links-item">
-                  <a href="{{ route('front.changeLang','en') }}">EN</a>
+                  <a href="{{ route('front.changeLang','en') }}">en</a>
                   <ul class="top-links-sub-menu" style="width: 53px; left: 0">
-                    <li class="top-links-item"><a href="{{ route('front.changeLang','ID') }}">ID</a></li>
+                    <li class="top-links-item"><a href="{{ route('front.changeLang','id') }}">id</a></li>
                   </ul>
                 </li>
                 @else
                 <li class="top-links-item">
-                  <a href="{{ route('front.changeLang','id') }}">ID</a>
+                  <a href="{{ route('front.changeLang','id') }}">id</a>
                   <ul class="top-links-sub-menu" style="width: 53px; left: 0">
-                    <li class="top-links-item"><a href="{{ route('front.changeLang','EN') }}">EN</a></li>
+                    <li class="top-links-item"><a href="{{ route('front.changeLang','en') }}">en</a></li>
                   </ul>
                 </li>
                 @endif

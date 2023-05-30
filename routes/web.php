@@ -27,7 +27,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashBoardController;
 |
 */
 
-Route::name('front.')->group(function () {
+Route::name('front.')->middleware(['setLocale']) ->group(function () {
     Route::get('/', [LandingController::class, 'index'])->name('index');
     Route::get('lang/change/{lang}', [LangController::class, 'change'])->name('changeLang');
     Route::get('/euro-swing-master/{slug}', [EuroSwingMasterController::class, 'index'])->name('euro');
