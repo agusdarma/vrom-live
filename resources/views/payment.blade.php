@@ -17,7 +17,7 @@
                   method="post">
                   @csrf
                   @method('post')
-                  <div class="row g-4">   
+                  <div id="sini" class="row g-4">   
                     <div class="mb-5 text-center col-12">
                       <h6 class="font-body text-uppercase ls-3">Customer Information</h6>                  
                     </div>         

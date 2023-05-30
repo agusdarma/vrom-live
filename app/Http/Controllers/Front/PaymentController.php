@@ -106,5 +106,7 @@ class PaymentController extends Controller
         Log::info('[{controllerName}] statusCode: {statusCode}',['statusCode' => $statusCode,'controllerName' => $controllerName]);
         Log::info('[{controllerName}] transactionStatus: {transactionStatus}',['transactionStatus' => $transactionStatus,'controllerName' => $controllerName]);
         return view('success');
+        // return redirect()->route('front.payment.success');
+        
     }
 }
