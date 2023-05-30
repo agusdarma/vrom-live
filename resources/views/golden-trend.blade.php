@@ -26,7 +26,7 @@
 
           <div class="text-center col-md-7 text-md-start bg-light">
 
-            <div class="mt-4 heading-block">
+            <div id="sini" class="mt-4 heading-block">
               <h2 class="text-black fw-bold bg-golden" style="width: 15rem;">Golden Trend</h2>
               <span>Golden Trend is a complete automated trading robot that has designed and create based on our best strategies in forex trading.</span>
             </div>

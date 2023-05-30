@@ -229,12 +229,22 @@
               class="top-links d-flex justify-content-center justify-content-lg-start"
             >
               <ul class="top-links-container">
+                @if(app()->getLocale() =='EN') 
                 <li class="top-links-item">
                   <a href="{{ route('front.changeLang','EN') }}">EN</a>
                   <ul class="top-links-sub-menu" style="width: 53px; left: 0">
                     <li class="top-links-item"><a href="{{ route('front.changeLang','ID') }}">ID</a></li>
                   </ul>
                 </li>
+                @else
+                <li class="top-links-item">
+                  <a href="{{ route('front.changeLang','ID') }}">ID</a>
+                  <ul class="top-links-sub-menu" style="width: 53px; left: 0">
+                    <li class="top-links-item"><a href="{{ route('front.changeLang','EN') }}">EN</a></li>
+                  </ul>
+                </li>
+                @endif
+                
               </ul>
             </div>
             <!-- .top-links end -->
@@ -750,9 +760,19 @@
             );
           });
         }
-      });
-    });
-  </script> 
+      });      
+    });    
+          (function ($) {
+          // Write your jQuery Codes here
+          // $(document).ready() etc. or Plugin Initializations
+          $(document).ready(function () {
+                    // Handler for .ready() called.
+                    $('html, body').animate({
+                        scrollTop: $('#sini').offset().top
+                    }, 'slow');
+                });
+          })(jQuery);
+  </script>  
 
 </body>
 

@@ -18,14 +18,23 @@ class LanguageManager
  
     {
  
-        if (session()->has('locale')) {
+        // if (session()->has('locale')) {
  
-            App::setLocale(session()->get('locale'));
+        //     App::setLocale(session()->get('locale'));
  
-        }
+        // }
  
            
  
+        // return $next($request);
+
+        if (session()->has('locale')) {
+
+            app()->setLocale(session()->get('locale'));
+        }
+
+
+
         return $next($request);
  
     }

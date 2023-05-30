@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LangController;
 use App\Http\Controllers\Front\FaqsController;
+use App\Http\Controllers\Front\LangController;
 use App\Http\Controllers\Front\DetailController;
 use App\Http\Controllers\Front\LandingController;
 use App\Http\Controllers\Front\PaymentController;

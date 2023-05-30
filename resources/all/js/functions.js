@@ -990,11 +990,11 @@
 	const Custom = function() {
 		return {
 			onReady: () => {
-				// Add JS Codes here to Run on Document Ready
+				// Add JS Codes here to Run on Document Ready				
 			},
 
 			onLoad: () => {
-				// Add JS Codes here to Run on Window Load
+				// Add JS Codes here to Run on Window Load				
 			},
 
 			onResize: () => {

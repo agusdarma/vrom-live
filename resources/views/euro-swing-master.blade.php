@@ -1,4 +1,4 @@
-<x-front-layout>
+<x-front-layout>  
     <!--Shape Divider--> 
     <div class="p-0 mt-5 section min-vh-75">
                 <img
@@ -26,7 +26,7 @@
 
                     <div class="text-center col-md-7 text-md-start bg-light">
 
-                      <div class="mt-4 heading-block">
+                      <div id="sini" class="mt-4 heading-block">
                         <h2 class="text-black fw-bold bg-hijau-stabilo" style="width: 21rem;">Euro Swing Master</h2>
                         <span>Euro Swing Master is a complete automated trading robot that has designed and create
 based on artificial intelligence ( AI ).</span>
@@ -258,5 +258,6 @@ intelligence makes decisions based on the past 400 or 500 candles</p>
             </div>
           </div>
         </div>
-        
+        <script>
+        </script>
 </x-front-layout>
