@@ -7,7 +7,8 @@ use App\Models\Booking;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Log;
 class PaymentController extends Controller
 {
     public function index(Request $request, $bookingId)
@@ -64,11 +65,11 @@ class PaymentController extends Controller
 
             // Convert to IDR
             $totalPrice = $booking->total_price * $rate;
-
+            $dateTimeFormatMidtrans = Carbon::now()->format('YmdHis');
             // Create Midtrans Params
             $midtransParams = [
                 'transaction_details' => [
-                    'order_id' => "Test-" . $booking->id,
+                    'order_id' => $dateTimeFormatMidtrans."-". $booking->id,
                     'gross_amount' => (int) $totalPrice,
                 ],
                 'customer_details' => [
@@ -97,6 +98,13 @@ class PaymentController extends Controller
 
     public function success(Request $request)
     {
+        $controllerName = Route::currentRouteAction(); // string
+        $orderId = $request->order_id;
+        $statusCode = $request->status_code;
+        $transactionStatus = $request->transaction_status;
+        Log::info('[{controllerName}] orderId: {orderId}',['orderId' => $orderId,'controllerName' => $controllerName]);
+        Log::info('[{controllerName}] statusCode: {statusCode}',['statusCode' => $statusCode,'controllerName' => $controllerName]);
+        Log::info('[{controllerName}] transactionStatus: {transactionStatus}',['transactionStatus' => $transactionStatus,'controllerName' => $controllerName]);
         return view('success');
     }
 }
