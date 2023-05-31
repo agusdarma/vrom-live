@@ -54,35 +54,40 @@ class MidtransCallbackController extends Controller
 
         // Cari transaksi berdasarkan ID
         $booking = Booking::where('id', $orderId)->first();
-        $orderIdDb = $booking->id;
-        $grossAmountDb = $booking->total_price;
-        $inputDb = $orderIdDb . $statusCode . $grossAmountDb . $serverKey;
-        $signatureDb = openssl_digest($inputDb, 'sha512');
-        Log::info('signatureDb: {signatureDb}', ['signatureDb' => $signatureDb]);
 
-        // Handle notification status midtrans
-        if ($status == 'capture') {
-            if ($type == 'credit_card') {
-                if ($fraud == 'challenge') {
-                    $booking->payment_status = 'pending';
-                } else {
-                    $booking->payment_status = 'success';
+        if($booking != null){
+            $orderIdDb = $booking->id;
+            $grossAmountDb = $booking->total_price;
+            $inputDb = $orderIdDb . $statusCode . $grossAmountDb . $serverKey;
+            $signatureDb = openssl_digest($inputDb, 'sha512');
+            Log::info('signatureDb: {signatureDb}', ['signatureDb' => $signatureDb]);
+    
+            // Handle notification status midtrans
+            if ($status == 'capture') {
+                if ($type == 'credit_card') {
+                    if ($fraud == 'challenge') {
+                        $booking->payment_status = 'pending';
+                    } else {
+                        $booking->payment_status = 'success';
+                    }
                 }
+            } elseif ($status == 'settlement') {
+                $booking->payment_status = 'success';
+            } elseif ($status == 'pending') {
+                $booking->payment_status = 'pending';
+            } elseif ($status == 'deny') {
+                $booking->payment_status = 'cancelled';
+            } elseif ($status == 'expire') {
+                $booking->payment_status = 'cancelled';
+            } elseif ($status == 'cancel') {
+                $booking->payment_status = 'cancelled';
             }
-        } elseif ($status == 'settlement') {
-            $booking->payment_status = 'success';
-        } elseif ($status == 'pending') {
-            $booking->payment_status = 'pending';
-        } elseif ($status == 'deny') {
-            $booking->payment_status = 'cancelled';
-        } elseif ($status == 'expire') {
-            $booking->payment_status = 'cancelled';
-        } elseif ($status == 'cancel') {
-            $booking->payment_status = 'cancelled';
+    
+            // Simpan transaksi
+            $booking->save();
         }
 
-        // Simpan transaksi
-        $booking->save();
+        
 
         // Return response
         return response()->json([
