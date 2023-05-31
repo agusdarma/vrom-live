@@ -3,7 +3,7 @@
         <div class="col-lg-7 col-md-10">
           <div class="my-5 shadow-sm card">
             <div class="p-5 card-body">
-              <h4 class="text-center ls-4">Confirmation Form</h4>
+              <h4 class="text-center ls-4">Re Payment Form</h4>
               <div class="divider divider-sm divider-center text-dark"><i class="bi-heart"></i></div>
               <div class="form-widget" data-alert-type="false">
                 <div class="form-result"></div>
@@ -13,10 +13,10 @@
                     <div class="css3-spinner-double-bounce2"></div>
                   </div>
                 </div>
-                <form class="mb-0" id="checkoutForm" action="{{ route('front.payment.update', $booking->id) }}" 
-                  method="post">
+                <form class="mb-0" id="checkoutForm" action="{{ route('front.repayment.update', $booking->id) }}" 
+                  method="get">
                   @csrf
-                  @method('post')
+                  @method('get')
                   <div id="sini" class="row g-4">   
                     <div class="mb-5 text-center col-12">
                       <h6 class="font-body text-uppercase ls-3">Customer Information</h6>                  
@@ -84,16 +84,13 @@
                         <div class="col-md-6">
                           <label for="payment_method">Payment Method<small class="text-danger">*</small></label>
                           <select id="payment_method" name="payment_method" class="form-select required">
-                            <option value="" disabled selected>Select Payment Method</option>
-                            <option value="midtrans">BCA Virtual Account</option>
-                            <option value="midtrans">Qris</option>
-                            <option value="midtrans">Gopay</option>                            
+                            <option value="" disabled selected>{{ $booking->payment_method }}</option>                              
                           </select>
                         </div>
                       </div>
                     </div>             
                     <div class="col-12">
-                      <button type="submit" id="checkoutButton" class="btn btn-primary w-100 btn-lg">Pay</button>
+                      <button type="submit" id="checkoutButton" class="btn btn-primary w-100 btn-lg">Repay</button>
                     </div>      
                   </div>
                 </form>

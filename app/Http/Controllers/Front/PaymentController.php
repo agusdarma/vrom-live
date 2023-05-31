@@ -26,6 +26,7 @@ class PaymentController extends Controller
         ]);
     }
 
+    
     // public function detail(Request $request, $bookingId)
     // {
     //     $booking = Booking::with(['item.brand', 'item.type'])->findOrFail($bookingId);
@@ -37,6 +38,7 @@ class PaymentController extends Controller
 
     public function update(Request $request, $bookingId)
     {
+        // https://github.com/Midtrans/midtrans-php
         $validator = Validator::make($request->all(), [
             'payment_method' => 'required',            
         ]);
@@ -64,26 +66,58 @@ class PaymentController extends Controller
             $rate = json_decode($body)->rates->IDR;
 
             // Convert to IDR
+         
+            $itemPrice = $booking->rental_price * $rate;
             $totalPrice = $booking->total_price * $rate;
+            $qty = 1;
             $dateTimeFormatMidtrans = Carbon::now()->format('YmdHis');
-            // Create Midtrans Params
-            $midtransParams = [
-                'transaction_details' => [
-                    'order_id' => $dateTimeFormatMidtrans."-". $booking->id,
-                    'gross_amount' => (int) $totalPrice,
-                ],
-                'customer_details' => [
-                    'first_name' => $booking->customer_name,
-                    'email' => $booking->customer_email,
-                ],
-                'enabled_payments' => ['gopay', 'bank_transfer'],
-                'vtweb' => []
-            ];
+                   
+            // Required
+            $transaction_details = array(
+                'order_id' => $dateTimeFormatMidtrans."-". $booking->id,
+                'gross_amount' => (int) $totalPrice,
+            );
+
+            // Optional
+            $item1_details = array(    
+                'id' => $booking->id,
+                'price' => (int) $itemPrice,
+                'quantity' => (int) $qty,
+                'name' => $booking->item_name,
+            );
+
+            // Optional
+            // $item2_details = array(
+            //     'id' => 'a2',
+            //     'price' => 45000,
+            //     'quantity' => 1,
+            //     'name' => "Orange"
+            // );
+
+            // Optional
+            $item_details = array ($item1_details);
+
+            // Optional
+            $customer_details = array(
+                'first_name'    => $booking->name, 
+                'email'         => $booking->user->email,
+                'phone'         => $booking->user->phone,    
+            );
+
+            // Fill SNAP API parameter
+            $params = array(
+                'transaction_details' => $transaction_details,
+                'customer_details' => $customer_details,
+                'item_details' => $item_details,
+            );
+
+            // dd($params);
 
 
+           
 
             // Get Snap Payment Page URL
-            $paymentUrl = \Midtrans\Snap::createTransaction($midtransParams)->redirect_url;
+            $paymentUrl = \Midtrans\Snap::createTransaction($params)->redirect_url;
 
             // Save payment URL to booking
             $booking->payment_url = $paymentUrl;
@@ -100,13 +134,24 @@ class PaymentController extends Controller
     {
         $controllerName = Route::currentRouteAction(); // string
         $orderId = $request->order_id;
+        $orderId_arr = explode ("-", $orderId); 
+        $orderId = $orderId_arr[1];
+        $booking = Booking::where('id', $orderId)->first();
+        $orderIdDb = $booking->id;
         $statusCode = $request->status_code;
         $transactionStatus = $request->transaction_status;
         Log::info('[{controllerName}] orderId: {orderId}',['orderId' => $orderId,'controllerName' => $controllerName]);
         Log::info('[{controllerName}] statusCode: {statusCode}',['statusCode' => $statusCode,'controllerName' => $controllerName]);
         Log::info('[{controllerName}] transactionStatus: {transactionStatus}',['transactionStatus' => $transactionStatus,'controllerName' => $controllerName]);
-        return view('success');
-        // return redirect()->route('front.payment.success');
+        // return view('mybookings');
+
+        if($transactionStatus == 'pending' and $statusCode == '201'){
+            return redirect()->route('front.repayment',$orderIdDb);
+        }else if($transactionStatus == 'settlement' and $statusCode == '200'){
+            return redirect()->route('front.index')->with('success', 'Payment successful, please check your email for next instruction.');
+        }
+
+        
         
     }
 }

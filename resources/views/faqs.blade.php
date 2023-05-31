@@ -71,7 +71,7 @@
               </div>
             </div>
             <div class="accordion-content">Yes. I recommend you to subscribe to it in order to keep track of my latest news and 
-              updates: <a href="https://t.me/TradingJourneyDiscussion" target="_blank">  <b>Telegram Group</b> </a></div>
+              updates: <a href="https://t.me/TradingJourneyIdFree" target="_blank">  <b>Telegram Group</b> </a></div>
 
           </div>
                 

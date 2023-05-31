@@ -278,7 +278,7 @@
             >
               <li>
                 <a
-                  href="https://t.me/TopBottomSignal"
+                  href="https://t.me/TradingJourneyIdFree"
                   target="_blank"
                   class="h-bg-telegram"
                   ><span class="ts-icon"
@@ -618,7 +618,7 @@
 
           <div class="text-center col-md-6 text-md-end">
             <div class="mb-2 d-flex justify-content-center justify-content-md-end">              
-              <a href="https://t.me/TopBottomSignal" class="border-transparent social-icon si-small h-bg-telegram">
+              <a href="https://t.me/TradingJourneyIdFree" class="border-transparent social-icon si-small h-bg-telegram">
                 <i class="fa-brands fa-telegram"></i>
                 <i class="fa-brands fa-telegram"></i>
               </a>
