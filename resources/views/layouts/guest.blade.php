@@ -226,14 +226,24 @@
             <div
               class="top-links d-flex justify-content-center justify-content-lg-start"
             >
-              <ul class="top-links-container">
-                <li class="top-links-item">
-                  <a href="#">EN</a>
-                  <ul class="top-links-sub-menu" style="width: 53px; left: 0">
-                    <li class="top-links-item"><a href="#">ID</a></li>
-                  </ul>
-                </li>
-              </ul>
+            <ul class="top-links-container">
+              @if(app()->getLocale() =='en') 
+              <li class="top-links-item">
+                <a href="{{ route('front.changeLang','en') }}">en</a>
+                <ul class="top-links-sub-menu" style="width: 53px; left: 0">
+                  <li class="top-links-item"><a href="{{ route('front.changeLang','id') }}">id</a></li>
+                </ul>
+              </li>
+              @else
+              <li class="top-links-item">
+                <a href="{{ route('front.changeLang','id') }}">id</a>
+                <ul class="top-links-sub-menu" style="width: 53px; left: 0">
+                  <li class="top-links-item"><a href="{{ route('front.changeLang','en') }}">en</a></li>
+                </ul>
+              </li>
+              @endif
+              
+            </ul>
             </div>
             <!-- .top-links end -->
           </div>
@@ -466,17 +476,17 @@
       "
     >
           <div class="py-0 content-wrap dark">
-              <div class="text-center row justify-content-center align-items-center min-vh-100">                  
-                  <h1 class="display-1 fw-bold">Industry-leading 
+              <div class="text-center row justify-content-center align-items-center min-vh-25">                  
+                  {{-- <h1 class="display-1 fw-bold">Industry-leading 
                       <div class="text-black badge bg-hijau-stabilo" style="width: 33rem;">
                         Expert Advisors 
                       </div>
                       For <b></b>
                       MetaTrader 4/5 <b></b>                        
-                  </h1>          
+                  </h1>           --}}
                                             
               </div>                
-              <div class="row">
+              {{-- <div class="row">
                 <div class="col-6">
                   <div class="p-1 center"><img src="{{ url("build/assets/all/images/mql5.webp")}}" alt="..."></div>
                 </div>
@@ -489,7 +499,7 @@
                 <div class="col-6">
                   <div class="p-1 center"><img src="{{ url("build/assets/all/images/myfxbook.webp")}}" alt="..."></div>
                 </div>
-              </div>                                      
+              </div>                                       --}}
           </div>  
                  
       </div>
@@ -612,7 +622,7 @@
               </a>
             </div>
 
-            <i class="bi-envelope"></i> info@tradingjourney.id            
+            <i class="bi-envelope"></i> admin@tradingjourney.id            
           </div>
           
         </div>

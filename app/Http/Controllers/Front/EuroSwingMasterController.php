@@ -6,8 +6,9 @@ use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
-
+use App\Mail\ConfirmEmailRegistration;
 class EuroSwingMasterController extends Controller
 {
     public function index($slug)
@@ -15,6 +16,10 @@ class EuroSwingMasterController extends Controller
         $controllerName = Route::currentRouteAction(); // string
         // $items = Item::with(['type', 'brand'])->latest()->take(4)->get()->reverse();
         $item = Item::with(['type', 'brand'])->whereSlug($slug)->firstOrFail();
+        // example sending email
+        // $recipient = "agusdk2011@gmail.com";
+        // Mail::to($recipient)->queue(new ConfirmEmailRegistration($item));
+
         $priceBase = $item->price;
         $price1Month = $priceBase*1;
         $price3Month = ($priceBase*3)*0.9/3;
