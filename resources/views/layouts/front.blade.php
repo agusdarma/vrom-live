@@ -479,12 +479,7 @@
     >
           <div class="py-0 content-wrap dark">
               <div class="text-center row justify-content-center align-items-center min-vh-90">                  
-                  <h1 class="display-1 fw-bold">Industry-leading 
-                      <div class="text-black badge bg-hijau-stabilo" style="width: 33rem;">
-                        Expert Advisors 
-                      </div>
-                      For <b></b>
-                      MetaTrader 4/5 <b></b>                        
+                  <h1 class="display-1">Industry-leading Expert Advisors For MetaTrader 4/5                      
                   </h1>          
                                             
               </div>                

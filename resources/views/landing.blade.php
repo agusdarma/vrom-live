@@ -31,9 +31,9 @@
             <div class="row justify-content-center">
               <div class="col-md-10">                
                 <p class="mb-4 text-black text-uppercase fw-semibold ls-1 font-primary">{{ __('messages.landingText1') }}</p>
-                <h1 class="display-3 fw-normal" style="letter-spacing: -1px;">{{ __('messages.landingText2') }} <div class="text-black badge bg-hijau-stabilo" style="width: 24rem;">
-                  {{ __('messages.landingText3') }}
-                  </div> Start Trading With Expert Advisor for <span class="nocolor text-decoration-underline fw-bold" style="text-underline-offset: 5px;">$5/month</span> only!</h1>
+                <h1 class="display-3 fw-normal" style="letter-spacing: -1px;">{{ __('messages.landingText2') }}                   
+                    {{ __('messages.landingText3') }}
+                  Start Trading With Expert Advisor for <span class="nocolor text-decoration-underline fw-bold" style="text-underline-offset: 5px;">$5/month</span> only!</h1>
                 <p class="mx-auto mb-5 op-07 mw-xs">How many <b>“+50% a month”</b> Expert Advisors have you seen being aggressively advertised? How many of those ended up blowing your account in a few months?</p>
                 <p class="mx-auto mb-5 op-07 mw-xs">There are lots of EAs that can give juicy returns in the short term, but don’t be fooled. It is no secret: hundreds of studies show that in 90 days or less, 94% of retail traders lose all their initial investments</p>
                 <p class="mx-auto mb-5 op-07 mw-xs">That means that only the remaining <b>6%</b> is able to make money and sustain their profits after a three months period</p>
@@ -43,9 +43,9 @@
                 <p class="mx-auto mb-5 op-07 mw-xs">That’s why in order to keep consistent mid and long-term profits, I am constantly optimizing, updating, and applying the latest innovations to all of my Expert Advisors</p>                                                
                 <div class="divider divider-right"><i class="bi-heart-fill"></i></div>
                 <p class="mb-4 text-black text-uppercase fw-semibold ls-1 font-primary">My Experts Advisor</p>
-                <h1 class="display-3 fw-normal" style="letter-spacing: -1px;">The EAs you need to become part of the 6% of <div class="text-black badge bg-hijau-stabilo" style="width: 38rem;">
+                <h1 class="display-3 fw-normal" style="letter-spacing: -1px;">The EAs you need to become part of the 6% of 
                     profitable Forex traders 
-                  </div></h1>
+                  </h1>
                   <p class="mx-auto mb-5 op-07 mw-xs">Making stable profits even on the worst markets while keeping low risk, and being able to maintain that over time, is what separates the 6% of Forex traders who get the money from the other 94% that lose it</p>                        
                   <p class="mx-auto mb-5 op-07 mw-xs">How they manage to achieve that has always been a big mystery known to a few. After +10 years of developing and optimizing trading algorithms, I’ve cracked the secrets, and you can discover them right now, through my Expert Advisors</p>                          
                 <!-- <a href="#" class="px-5 m-0 mt-2 button button-xlarge rounded-pill">Get Started</a> -->
