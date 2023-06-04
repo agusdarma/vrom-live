@@ -165,7 +165,8 @@ intelligence makes decisions based on the past 400 or 500 candles</p>
                     <div class="col-md-10">                        
                       <p class="mb-4 text-black text-uppercase fw-semibold ls-1 font-primary">WITH EURO SWING MASTER EXPERT ADVISOR</p>
                       <h1 class="display-3 fw-normal" style="letter-spacing: -1px;">You can auto-trade with a robot which not only profitable, 
-                        <div class="text-black badge bg-hijau-stabilo" style="width: 24rem;"> but also stable. </div> 
+                        {{-- <div class="text-black badge bg-hijau-stabilo" style="width: 24rem;"> but also stable. </div>  --}}
+                        but also stable.
                       </h1>
                       <div class="divider divider-right"><i class="bi-heart-fill"></i></div>
                       <h3>How Euro Swing Master Works?</h3>

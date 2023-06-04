@@ -161,7 +161,7 @@
           <div class="col-md-10">                        
             <p class="mb-4 text-black text-uppercase fw-semibold ls-1 font-primary">WITH GOLDEN TREND EXPERT ADVISOR</p>
             <h1 class="display-3 fw-normal" style="letter-spacing: -1px;">You can auto-trade with a robot which not only profitable, 
-              <div class="text-black badge bg-hijau-stabilo" style="width: 24rem;"> but also stable. </div> 
+              but also stable.
             </h1>
             <div class="divider divider-right"><i class="bi-heart-fill"></i></div>
             <h3>How Golden Trend Works?</h3>
@@ -197,9 +197,9 @@
             <div class="divider divider-right"><i class="bi-heart-fill"></i></div>
 
             <h3>How Advanced Grid Strategies Works?</h3>
-            <h1 class="display-6 fw-normal" style="letter-spacing: -1px;">EA can open a maximum of <div class="text-black badge bg-golden"> 7 positions </div>  in the same direction, in <div class="text-black badge bg-golden"> 900 points loss </div> , the EA
-              will open <div class="text-black badge bg-golden"> 2 extra trades </div> , and in <div class="text-black badge bg-golden"> 1800 points loss </div> the EA will open <div class="text-black badge bg-golden"> 4 extra trades </div>, all those
-              <div class="text-black badge bg-golden"> 7 open positions </div> have the same stop loss so all of them will close at the stop loss of the
+            <h1 class="display-6 fw-normal" style="letter-spacing: -1px;">EA can open a maximum of <b> 7 positions </b>  in the same direction, in <b> 900 points loss </b> , the EA
+              will open <b> 2 extra trades </b> , and in <b> 1800 points loss </b> the EA will open <b> 4 extra trades </b>, all those
+              <b> 7 open positions </b> have the same stop loss so all of them will close at the stop loss of the
               first trade.                        
             </h1>
 
@@ -208,12 +208,12 @@
               The risk will be 2600 + ( 2 * 1700 ) + ( 4 * 800 ) = 9200 points
             </h2>
             <h2 class="display-6 fw-normal" style="letter-spacing: -1px;">
-              So the Maximum risk will be about <div class="text-black badge bg-golden"> $92 per 0.01 lot size </div> in most brokers.
+              So the Maximum risk will be about <b> $92 per 0.01 lot size </b> in most brokers.
             </h2>
             <h2 class="display-6 fw-normal" style="letter-spacing: -1px;"> Balance capital = $1.250 </h2>
             <h2 class="display-6 fw-normal" style="letter-spacing: -1px;"> Trade size = 0.01 lot </h2>
             <h2 class="display-6 fw-normal" style="letter-spacing: -1px;"> Maximum loss = $92 </h2>
-            <h2 class="display-6 fw-normal" style="letter-spacing: -1px;"> <div class="text-black badge bg-golden"> Maximum loss(%) = 7.36% </div> </h2>
+            <h2 class="display-6 fw-normal" style="letter-spacing: -1px;"> <b> Maximum loss(%) = 7.36% </b> </h2>
             <div class="divider divider-right"><i class="bi-heart-fill"></i></div>
             
             <h3>Backtest &amp; History</h3>
