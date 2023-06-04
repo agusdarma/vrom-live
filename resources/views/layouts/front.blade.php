@@ -9,6 +9,9 @@
 
   <title>{{ config('app.name', 'Laravel') }}</title>
 
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="{{ url("build/assets/all/images/favicon/favicon.ico")}}">
+
   <!-- Font Imports -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
