@@ -1,11 +1,7 @@
 <x-guest-layout>
         
 
-        @if (session('status'))
-            <div class="mb-4 text-sm font-medium text-green-600">
-                {{ session('status') }}
-            </div>
-        @endif
+        
         <!-- Content
 		============================================= -->
 		<section id="content">
@@ -14,6 +10,11 @@
 					
 					<div class="mx-auto mb-0 accordion accordion-lg" style="max-width: 550px;">
 						<x-validation-errors class="mb-4" />
+						@if (session('status'))
+							<div class="mb-4 text-sm font-medium text-green-600">
+								{{ session('status') }}
+							</div>
+						@endif
 						<div class="accordion-header">
 							<div class="accordion-icon">
 								<i class="accordion-closed fa-solid fa-lock"></i>

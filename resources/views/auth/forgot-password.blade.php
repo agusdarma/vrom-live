@@ -1,5 +1,4 @@
-<x-guest-layout>
-    <x-authentication-card>
+<x-guest-layout>    
         {{-- <x-slot name="logo">
             <x-authentication-card-logo />
         </x-slot> --}}
@@ -8,13 +7,9 @@
             {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
         </div> --}}
 
-        @if (session('status'))
-            <div class="mb-4 text-sm font-medium text-green-600">
-                {{ session('status') }}
-            </div>
-        @endif
+        
 
-        <x-validation-errors class="mb-4" />
+        
 
         {{-- <form method="POST" action="{{ route('password.email') }}">
             @csrf
@@ -31,13 +26,18 @@
             </div>
         </form> --}}
         <section id="content">
-			<div class="content-wrap">
-				<div id="sini" class="container">
-
+			<div id="sini" class="content-wrap">
+				<div class="container">
+                    
 					<div class="mx-auto mb-0 accordion accordion-lg" style="max-width: 550px;">
-
+                        <x-validation-errors class="mb-4" />
+                        @if (session('status'))
+                            <div class="mb-4 text-sm font-medium text-green-600">
+                                {{ session('status') }}
+                            </div>
+                        @endif
 						<div class="accordion-header">
-                              <h6 class="font-body text-uppercase ls-3">Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.</h6>                  
+                              <h4 class="ls-3">Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.</h4>                  
 						</div>
 						<div class="accordion-content">
 							<form id="forget-form" name="forget-form" class="mb-0 row" action="{{ route('password.email') }}" method="post">
@@ -61,5 +61,4 @@
 				{{-- </div> --}}
 			</div>
 		</section><!-- #content end -->
-    </x-authentication-card>
 </x-guest-layout>
