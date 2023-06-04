@@ -8,8 +8,14 @@
 
   <title>{{ config('app.name', 'Laravel') }}</title>
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="{{ url("build/assets/all/images/favicon/favicon.ico")}}">
+ <!-- Favicon -->
+ <link rel="shortcut icon" type="image/x-icon" href="{{ url("build/assets/all/images/favicon/favicon.ico")}}">
+ <link rel="apple-touch-icon" sizes="180x180" href="{{ url("build/assets/all/images/favicon/android-chrome-192x192.png")}}">
+ <link rel="apple-touch-icon" sizes="180x180" href="{{ url("build/assets/all/images/favicon/android-chrome-512x512.png")}}">
+ <link rel="apple-touch-icon" sizes="180x180" href="{{ url("build/assets/all/images/favicon/apple-touch-icon.png")}}">
+ <link rel="icon" type="image/png" sizes="32x32" href="{{ url("build/assets/all/images/favicon/favicon-32x32.png")}}">
+ <link rel="icon" type="image/png" sizes="16x16" href="{{ url("build/assets/all/images/favicon/favicon-16x16.png")}}">
+ <link rel="manifest" href="{{ url("build/assets/all/images/favicon/site.webmanifest")}}">
 
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
