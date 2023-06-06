@@ -18,6 +18,16 @@
   <link rel="icon" type="image/png" sizes="16x16" href="{{ url("build/assets/all/images/favicon/favicon-16x16.png")}}">
   <link rel="manifest" href="{{ url("build/assets/all/images/favicon/site.webmanifest")}}">
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGB2DY0S8C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XGB2DY0S8C');
+  </script>
+
   <!-- Font Imports -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
