@@ -11,10 +11,10 @@ class EditProfileController extends Controller
 {
     public function index()
     {
-        $userLogin = Auth::user();
-        dd($userLogin);
+        $user = Auth::user();
+        // dd($userLogin);
         return view('my-profile', [
-            $this,
+            'user' => $user,
         ]);
     }
 
