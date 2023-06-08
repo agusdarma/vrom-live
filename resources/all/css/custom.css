@@ -12,13 +12,13 @@
   background-color: var(--cnvs-color-waze) !important;
 }
 
-.bg-primary {
+/* .bg-primary {
   --bs-bg-opacity: 1;
   background-color: rgba(
-    var(--bs-hijau-stabilo),
+    var(--bs-primary-rgb),
     var(--bs-bg-opacity)
   ) !important;
-}
+} */
 
 .bg-hijau-stabilo {
   --bs-bg-opacity: 1;

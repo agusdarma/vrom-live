@@ -8,9 +8,11 @@ use App\Http\Controllers\Front\LandingController;
 use App\Http\Controllers\Front\PaymentController;
 use App\Http\Controllers\Front\CheckoutController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Front\RepaymentController;
+use App\Http\Controllers\Front\EditProfileController;
 use App\Http\Controllers\Front\GoldenTrendController;
 use App\Http\Controllers\Front\EuroSwingMasterController;
-use App\Http\Controllers\Front\RepaymentController;
+use App\Http\Controllers\Front\PoundSwingMasterController;
 use App\Http\Controllers\Admin\ItemController as AdminItemController;
 use App\Http\Controllers\Admin\TypeController as AdminTypeController;
 use App\Http\Controllers\Admin\BrandController as AdminBrandController;
@@ -34,6 +36,7 @@ Route::name('front.')->middleware(['setLocale']) ->group(function () {
     Route::get('lang/change/{lang}', [LangController::class, 'change'])->name('changeLang');
     Route::get('/euro-swing-master/{slug}', [EuroSwingMasterController::class, 'index'])->name('euro');
     Route::get('/golden-trend/{slug}', [GoldenTrendController::class, 'index'])->name('golden');
+    Route::get('/pound-swing-master/{slug}', [PoundSwingMasterController::class, 'index'])->name('pound');
     Route::get('/faqs', [FaqsController::class, 'index'])->name('faq');
     Route::get('/detail/{slug}', [DetailController::class, 'index'])->name('detail');
     Route::get('/payment/success', [PaymentController::class, 'success'])->name('payment.success');
@@ -46,7 +49,9 @@ Route::name('front.')->middleware(['setLocale']) ->group(function () {
         Route::post('/payment/update/{bookingId}', [PaymentController::class, 'update'])->name('payment.update');
 
         Route::get('/repayment/update/{bookingId}', [RepaymentController::class, 'update'])->name('repayment.update');   
-        Route::get('/repayment/index/{bookingId}', [RepaymentController::class, 'index'])->name('repayment');        
+        Route::get('/repayment/index/{bookingId}', [RepaymentController::class, 'index'])->name('repayment');   
+        
+        Route::get('/edit-profile', [EditProfileController::class, 'index'])->name('editProfile');   
              
         
     });

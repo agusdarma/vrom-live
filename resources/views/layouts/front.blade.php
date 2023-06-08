@@ -250,16 +250,16 @@
               <ul class="top-links-container">
                 @if(app()->getLocale() =='en') 
                 <li class="top-links-item">
-                  <a href="{{ route('front.changeLang','en') }}">en</a>
-                  <ul class="top-links-sub-menu" style="width: 53px; left: 0">
-                    <li class="top-links-item"><a href="{{ route('front.changeLang','id') }}">id</a></li>
+                  <a href="{{ route('front.changeLang','en') }}">English</a>
+                  <ul class="top-links-sub-menu">
+                    <li class="top-links-item"><a href="{{ route('front.changeLang','id') }}">Indonesian</a></li>
                   </ul>
                 </li>
                 @else
                 <li class="top-links-item">
-                  <a href="{{ route('front.changeLang','id') }}">id</a>
-                  <ul class="top-links-sub-menu" style="width: 53px; left: 0">
-                    <li class="top-links-item"><a href="{{ route('front.changeLang','en') }}">en</a></li>
+                  <a href="{{ route('front.changeLang','id') }}">Indonesian</a>
+                  <ul class="top-links-sub-menu">
+                    <li class="top-links-item"><a href="{{ route('front.changeLang','en') }}">English</a></li>
                   </ul>
                 </li>
                 @endif
@@ -442,17 +442,29 @@
                   <a class="menu-link" href="#"><div>Expert Advisor</div></a>
                   <ul class="sub-menu-container">
                     <li class="menu-item">
-                      <a class="menu-link" href="/euro-swing-master/euro-swing-master-n2i8j"><div>Euro Swing Master</div></a>
+                      <a class="menu-link" href="{{ route('front.euro','euro-swing-master-n2i8j') }}"><div>Euro Swing Master</div></a>
                     </li>
-                    <li class="menu-item">
-                      <a class="menu-link" href="/golden-trend/golden-trend-8kkbd"><div>Golden Trend</div></a>
+                    <li class="menu-item">                      
+                      <a class="menu-link" href="{{ route('front.pound','pound-swing-master-8kkbd') }}"><div>Pound Swing Master</div></a>
                     </li>
+                    {{-- <li class="menu-item">
+                      <a class="menu-link" href="{{ route('front.golden','golden-trend-8kkbd') }}"><div>Golden Trend</div></a>
+                    </li> --}}
                   </ul>
                 </li>    
                 @auth                
-                <li class="menu-item">                  
-                  <a class="menu-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                  this.closest('form').submit();"><div>Logout</div></a>                  
+                <li class="menu-item">            
+                  <a class="menu-link" href="#"><div>My Dashboard</div></a>   
+                  <ul class="sub-menu-container">
+                    <li class="menu-item">
+                      <a class="menu-link" href="{{ route('front.editProfile') }}"><div>My Profile</div></a>
+                    </li>
+                    <li class="menu-item">
+                      <a class="menu-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                      this.closest('form').submit();"><div>Logout</div></a> 
+                    </li>
+                  </ul>   
+                                   
                 </li>                    
                 @else     
                 <li class="menu-item">

@@ -2,6 +2,10 @@
     <div class="container ">
         <div class="row justify-content-md-center">
             <div class="col-md-auto">
+                    <x-validation-errors class="mb-4" />
+                    @if (session('status') == 'verification-link-sent')
+                        <h3 class="text-black fw-bold bg-hijau-stabilo">{{ __('messages.verifyEmailText4') }}</h3>                        
+                    @endif
                     <div class="mt-4 heading-block">
                       <h2 class="text-black fw-bold">{{ __('messages.verifyEmailText1') }}</h2>
                       <span>{{ __('messages.verifyEmailText2') }}</span>

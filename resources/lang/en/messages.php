@@ -14,6 +14,7 @@ return [
     'verifyEmailText1' => 'Verify your Email Account',
     'verifyEmailText2' => "Before continuing, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.",
     'verifyEmailText3' => "Resend Verification Email",
+    'verifyEmailText4' => "Email Verification has been sent",
 
 
 ];
