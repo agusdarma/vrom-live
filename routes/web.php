@@ -52,7 +52,7 @@ Route::name('front.')->middleware(['setLocale']) ->group(function () {
         Route::get('/repayment/index/{bookingId}', [RepaymentController::class, 'index'])->name('repayment');   
         
         Route::get('/edit-profile', [EditProfileController::class, 'index'])->name('editProfile');   
-             
+        Route::get('/edit-profile/{user}', [EditProfileController::class, 'update'])->name('editProfile.update');        
         
     });
 });

@@ -47,6 +47,8 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ url("build/assets/all/css/custom.css")}}" />
 
+  <script type="text/javascript" src="{{url('/build/assets/sweetalert2.all.min.js')}}"></script>
+
   <!-- Styles -->
   @livewireStyles
 
@@ -248,16 +250,16 @@
             <ul class="top-links-container">
               @if(app()->getLocale() =='en') 
               <li class="top-links-item">
-                <a href="{{ route('front.changeLang','en') }}">en</a>
-                <ul class="top-links-sub-menu" style="width: 53px; left: 0">
-                  <li class="top-links-item"><a href="{{ route('front.changeLang','id') }}">id</a></li>
+                <a href="{{ route('front.changeLang','en') }}">English</a>
+                <ul class="top-links-sub-menu">
+                  <li class="top-links-item"><a href="{{ route('front.changeLang','id') }}">Indonesian</a></li>
                 </ul>
               </li>
               @else
               <li class="top-links-item">
-                <a href="{{ route('front.changeLang','id') }}">id</a>
-                <ul class="top-links-sub-menu" style="width: 53px; left: 0">
-                  <li class="top-links-item"><a href="{{ route('front.changeLang','en') }}">en</a></li>
+                <a href="{{ route('front.changeLang','id') }}">Indonesian</a>
+                <ul class="top-links-sub-menu">
+                  <li class="top-links-item"><a href="{{ route('front.changeLang','en') }}">English</a></li>
                 </ul>
               </li>
               @endif
@@ -451,10 +453,19 @@
                   </ul>
                 </li>    
                 @auth                
-                <li class="menu-item">                  
-                  <a class="menu-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                  this.closest('form').submit();"><div>Logout</div></a>                  
-                </li>                    
+                <li class="menu-item">            
+                  <a class="menu-link" href="#"><div>My Dashboard</div></a>   
+                  <ul class="sub-menu-container">
+                    <li class="menu-item">
+                      <a class="menu-link" href="{{ route('front.editProfile') }}"><div>My Profile</div></a>
+                    </li>
+                    <li class="menu-item">
+                      <a class="menu-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                      this.closest('form').submit();"><div>Logout</div></a> 
+                    </li>
+                  </ul>   
+                                   
+                </li>                   
                 @else     
                 <li class="menu-item">
                   <a class="menu-link" href="{{ route('login') }}"><div>Login</div></a>
@@ -674,6 +685,28 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
   <!--  Placeholder JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.7/holder.min.js"></script>
+
+  {{-- Sweetalert if error exist --}}
+  @if (session()->has('error'))
+  <script>
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: '{{ session('error') }}',
+    })
+  </script>
+  @endif
+
+  {{-- Sweetalert if success exist --}}
+  @if (session()->has('success'))
+  <script>
+    Swal.fire({
+      icon: 'success',
+      title: 'Berhasil',
+      text: '{{ session('success') }}',
+    })
+  </script>
+  @endif
 
   <script>
     jQuery(window).on("load", function () {

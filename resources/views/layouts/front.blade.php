@@ -456,9 +456,9 @@
                 <li class="menu-item">            
                   <a class="menu-link" href="#"><div>My Dashboard</div></a>   
                   <ul class="sub-menu-container">
-                    {{-- <li class="menu-item">
+                    <li class="menu-item">
                       <a class="menu-link" href="{{ route('front.editProfile') }}"><div>My Profile</div></a>
-                    </li> --}}
+                    </li>
                     <li class="menu-item">
                       <a class="menu-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                       this.closest('form').submit();"><div>Logout</div></a> 

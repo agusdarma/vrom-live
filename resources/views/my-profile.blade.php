@@ -14,23 +14,23 @@
 					@endif
 					<div class="accordion-header">
 						<div class="accordion-icon">							
-							<i class="accordion-open bi-unlock"></i>
+							<i class="accordion-open uil-user-circle"></i>
 						</div>
 						<div class="accordion-title">
 							Profile Information
 						</div>
 					</div>
 					<div class="accordion-content">
-						<form id="update-profile-form" name="update-profile-form" class="mb-0 row" action="{{ route('login') }}" method="post">
+						<form id="update-profile-form" name="update-profile-form" class="mb-0 row" action="{{ route('front.editProfile.update',$user) }}" method="get">
 							@csrf
 							<div class="col-12 form-group">
 								<label for="update-profile-form-name">Name:</label>
-								<input type="text" id="update-profile-form-name" name="name" value="{{ old('$user->name') }}" class="form-control">
+								<input type="text" id="update-profile-form-name" name="name" value="{{ $user->name }}" class="form-control">
 							</div>
 
 							<div class="col-12 form-group">
 								<label for="update-profile-form-email">Email:</label>
-								<input type="text" id="update-profile-form-email" name="email" value="{{ old('$user->email') }}" class="form-control">
+								<input type="text" id="update-profile-form-email" name="email" value="{{ $user->email }}" class="form-control">
 							</div>
 							<div class="col-12 form-group">
 								<div class="d-flex justify-content-between">
