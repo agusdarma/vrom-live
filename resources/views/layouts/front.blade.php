@@ -7,12 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{ config('app.name', 'Laravel') }}</title>
+  {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
+  <title>@yield('title')</title>
+  
 
  <!-- Favicon -->
  <link rel="shortcut icon" type="image/x-icon" href="{{ url("build/assets/all/images/favicon/favicon.ico")}}">
- <link rel="apple-touch-icon" sizes="180x180" href="{{ url("build/assets/all/images/favicon/android-chrome-192x192.png")}}">
- <link rel="apple-touch-icon" sizes="180x180" href="{{ url("build/assets/all/images/favicon/android-chrome-512x512.png")}}">
+ <link rel="shortcut icon" sizes="192x192" href="{{ url("build/assets/all/images/favicon/android-chrome-192x192.png")}}">
+ <link rel="shortcut icon" sizes="512x512" href="{{ url("build/assets/all/images/favicon/android-chrome-512x512.png")}}">
  <link rel="apple-touch-icon" sizes="180x180" href="{{ url("build/assets/all/images/favicon/apple-touch-icon.png")}}">
  <link rel="icon" type="image/png" sizes="32x32" href="{{ url("build/assets/all/images/favicon/favicon-32x32.png")}}">
  <link rel="icon" type="image/png" sizes="16x16" href="{{ url("build/assets/all/images/favicon/favicon-16x16.png")}}">
@@ -43,7 +45,11 @@
   <!-- Font Icons -->
   <link rel="stylesheet" href="{{ url("build/assets/all/css/font-icons.css")}}" />
   <!-- Plugins/Components CSS -->
-  <link rel="stylesheet" href="{{ url("build/assets/all/css/swiper.css")}}" />
+  <link rel="stylesheet" href="{{ url("build/assets/all/css/swiper.css")}}" />  
+	<!-- SLIDER REVOLUTION 5.x CSS SETTINGS -->
+	<link rel="stylesheet" href="{{ url("build/assets/all/css/include/rs-plugin/css/settings.css")}}" media="screen">
+	<link rel="stylesheet" href="{{ url("build/assets/all/css/include/rs-plugin/css/layers.css")}}">
+	<link rel="stylesheet" href="{{ url("build/assets/all/css/include/rs-plugin/css/navigation.css")}}">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ url("build/assets/all/css/custom.css")}}" />
 
@@ -231,7 +237,33 @@
 		.btn-group input[type="number"] ~ label.error,
 		.btn-group select ~ label.error { display: none !important; }
 
+    .revo-slider-emphasis-text {
+			font-size: 64px;
+			font-weight: 700;
+			letter-spacing: -1px;
+			font-family: 'Poppins', sans-serif;
+			padding: 15px 20px;
+			border-top: 2px solid #FFF;
+			border-bottom: 2px solid #FFF;
+		}
 
+		.revo-slider-desc-text {
+			font-size: 20px;
+			font-family: 'Lato', sans-serif;
+			width: 650px;
+			text-align: center;
+			line-height: 1.5;
+		}
+
+		.revo-slider-caps-text {
+			font-size: 16px;
+			font-weight: 400;
+			letter-spacing: 3px;
+			font-family: 'Poppins', sans-serif;
+		}
+		.tp-video-play-button { display: none !important; }
+
+		.tp-caption { white-space: nowrap; }
   </style>
 </head>
 
@@ -275,13 +307,13 @@
             <div class="top-links">
               <ul class="top-links-container">
                 <li class="px-1 top-links-item ls-2">
-                  <a href="/">Home</a>
+                  <a href="{{ route('front.index') }}">Home</a>
                 </li>                
                 <!-- <li class="px-1 top-links-item ls-2">
                   <a href="#">Contact</a>
                 </li> -->
                 <li class="px-1 top-links-item ls-2">
-                  <a href="/faqs">FAQs</a>
+                  <a href="{{ route('front.faq') }}">FAQs</a>
                 </li>
               </ul>
             </div>
@@ -436,7 +468,7 @@
             <nav class="primary-menu">
               <ul class="menu-container">
                 <li class="menu-item current">
-                  <a class="menu-link" href="/"><div>Home</div></a>
+                  <a class="menu-link" href="{{ route('front.index') }}"><div>Home</div></a>
                 </li>
                 <li class="menu-item">
                   <a class="menu-link" href="#"><div>Expert Advisor</div></a>
@@ -446,10 +478,7 @@
                     </li>
                     <li class="menu-item">                      
                       <a class="menu-link" href="{{ route('front.pound','pound-swing-master-8kkbd') }}"><div>Pound Swing Master</div></a>
-                    </li>
-                    {{-- <li class="menu-item">
-                      <a class="menu-link" href="{{ route('front.golden','golden-trend-8kkbd') }}"><div>Golden Trend</div></a>
-                    </li> --}}
+                    </li>                    
                   </ul>
                 </li>    
                 @auth                
@@ -510,8 +539,7 @@
     >
           <div class="py-0 content-wrap dark">
               <div class="text-center row justify-content-center align-items-center min-vh-90">                  
-                  <h1 class="display-1">Industry-leading Expert Advisors For MetaTrader 4/5                      
-                  </h1>          
+                  <h1 class="display-1">{{ __('messages.frontText1') }}</h1>          
                                             
               </div>                
               <div class="row">
@@ -550,10 +578,7 @@
                 <div class="col-md-4">
                   <div class="widget">                    
 
-                    <p>
-                      Industry-leading   <strong>Expert Advisors</strong>
-                      <strong>For MetaTrader 4</strong> &amp;
-                      <strong>MetaTrader 5</strong>
+                    <p>{{ __('messages.frontFooterText1') }} <strong>{{ __('messages.frontFooterText2') }}</strong> <strong>{{ __('messages.frontFooterText3') }}</strong> &amp; <strong>{{ __('messages.frontFooterText4') }}</strong>
                     </p>
 
                     <div
@@ -569,28 +594,22 @@
 
                 <div class="col-md-4">
                   <div class="widget widget_links">
-                    <h4>Jump In</h4>
+                    <h4>{{ __('messages.frontFooterText5') }}</h4>
 
                     <ul>
                       <li>
-                        <a href="/"
+                        <a href="{{ route('front.index') }}"
                           >Home</a
                         >
                       </li>
                       <li>
-                        <a
-                          href="/euro-swing-master/euro-swing-master-n2i8j"
-                          >Euro Swing Master EA</a
-                        >
+                        <a href="{{ route('front.euro','euro-swing-master-n2i8j') }}">Euro Swing Master</a>                        
                       </li>
                       <li>
-                        <a
-                          href="/golden-trend/golden-trend-8kkbd"
-                          >Golden Trend EA</a
-                        >
+                        <a href="{{ route('front.pound','pound-swing-master-8kkbd') }}">Pound Swing Master</a>                        
                       </li>
                       <li>
-                        <a href="/faqs"
+                        <a href="{{ route('front.faq') }}"
                           >FAQs</a
                         >
                       </li>                        
@@ -675,6 +694,18 @@
   <script src="{{ url("build/assets/all/js/functions.js")}}"></script>  
   <script src="{{ url("build/assets/all/js/plugins.counter.js")}}"></script>
   <script src="{{ url("build/assets/all/js/plugins.bootstrap.js")}}"></script>
+
+<!-- SLIDER REVOLUTION 5.x SCRIPTS  -->
+<script src="{{ url("build/assets/all/js/include/rs-plugin/js/jquery.themepunch.tools.min.js")}}"></script>
+<script src="{{ url("build/assets/all/js/include/rs-plugin/js/jquery.themepunch.revolution.min.js")}}"></script>
+
+<script src="{{ url("build/assets/all/js/include/rs-plugin/js/extensions/revolution.extension.video.min.js")}}"></script>
+<script src="{{ url("build/assets/all/js/include/rs-plugin/js/extensions/revolution.extension.slideanims.min.js")}}"></script>
+<script src="{{ url("build/assets/all/js/include/rs-plugin/js/extensions/revolution.extension.layeranimation.min.js")}}"></script>
+<script src="{{ url("build/assets/all/js/include/rs-plugin/js/extensions/revolution.extension.kenburn.min.js")}}"></script>
+<script src="{{ url("build/assets/all/js/include/rs-plugin/js/extensions/revolution.extension.navigation.min.js")}}"></script>
+<script src="{{ url("build/assets/all/js/include/rs-plugin/js/extensions/revolution.extension.parallax.min.js")}}"></script>
+
   
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
@@ -704,6 +735,7 @@
     </script>
   @endif
   <script>
+    
     jQuery(window).on("load", function () {
       jQuery(".primary-menu").each(function () {
         let menuEl = jQuery(this),
@@ -791,11 +823,111 @@
           (function ($) {
           // Write your jQuery Codes here
           // $(document).ready() etc. or Plugin Initializations
-          $(document).ready(function () {
+          // $(document).ready(function () {
+            var tpj=jQuery;
+		        var revapi4;
+            tpj(document).ready(function () {            
                     // Handler for .ready() called.
                     $('html, body').animate({
                         scrollTop: $('#sini').offset().top
                     }, 'slow');
+                    if(tpj("#rev_slider_4_1").revolution == undefined){
+                      revslider_showDoubleJqueryError("#rev_slider_4_1");
+                    }else{
+                      
+                      revapi4 = tpj("#rev_slider_4_1").show().revolution({
+                        sliderType:"standard",
+                        jsFileLocation:"{{ url("build/assets/all/js/include/rs-plugin/js/")}}",
+                        sliderLayout:"auto",
+                        dottedOverlay:"none",
+                        delay:9000,
+                        navigation: {
+                          keyboardNavigation:"off",
+                          keyboard_direction: "horizontal",
+                          mouseScrollNavigation:"off",
+                          onHoverStop:"on",
+                          touch:{
+                            touchenabled:"on",
+                            swipe_threshold: 75,
+                            swipe_min_touches: 1,
+                            swipe_direction: "horizontal",
+                            drag_block_vertical: false
+                          }
+                          ,
+                          arrows: {
+                            style:"zeus",
+                            enable:true,
+                            hide_onmobile:true,
+                            hide_under:600,
+                            hide_onleave:true,
+                            hide_delay:200,
+                            hide_delay_mobile:1200,
+                            tmp:'<div class="tp-title-wrap">  	<div class="tp-arr-imgholder"></div> </div>',
+                            left: {
+                              h_align:"left",
+                              v_align:"center",
+                              h_offset:30,
+                              v_offset:0
+                            },
+                            right: {
+                              h_align:"right",
+                              v_align:"center",
+                              h_offset:30,
+                              v_offset:0
+                            }
+                          }
+                          ,
+                          bullets: {
+                            enable:true,
+                            hide_onmobile:true,
+                            hide_under:600,
+                            style:"metis",
+                            hide_onleave:true,
+                            hide_delay:200,
+                            hide_delay_mobile:1200,
+                            direction:"horizontal",
+                            h_align:"center",
+                            v_align:"bottom",
+                            h_offset:0,
+                            v_offset:30,
+                            space:5,
+                            tmp:'<span class="tp-bullet-img-wrap">  <span class="tp-bullet-image"></span></span><span class="tp-bullet-title"> @{{title}} </span>'
+                          }
+                        },
+                        viewPort: {
+                          enable:true,
+                          outof:"pause",
+                          visible_area:"80%"
+                        },
+                        responsiveLevels:[1240,1024,778,480],
+                        gridwidth:[1240,1024,778,480],
+                        gridheight:[600,600,500,400],
+                        lazyType:"none",
+                        parallax: {
+                          type:"mouse",
+                          origo:"slidercenter",
+                          speed:2000,
+                          levels:[2,3,4,5,6,7,12,16,10,50],
+                        },
+                        shadow:0,
+                        spinner:"off",
+                        stopLoop:"off",
+                        stopAfterLoops:-1,
+                        stopAtSlide:-1,
+                        shuffle:"off",
+                        autoHeight:"off",
+                        hideThumbsOnMobile:"off",
+                        hideSliderAtLimit:0,
+                        hideCaptionAtLimit:0,
+                        hideAllCaptionAtLilmit:0,
+                        debugMode:false,
+                        fallbacks: {
+                          simplifyAll:"off",
+                          nextSlideOnWindowFocus:"off",
+                          disableFocusListener:false,
+                        }
+                      });
+                    }
                 });
           })(jQuery);
   </script>  

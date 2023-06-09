@@ -12,14 +12,6 @@
   background-color: var(--cnvs-color-waze) !important;
 }
 
-/* .bg-primary {
-  --bs-bg-opacity: 1;
-  background-color: rgba(
-    var(--bs-primary-rgb),
-    var(--bs-bg-opacity)
-  ) !important;
-} */
-
 .bg-hijau-stabilo {
   --bs-bg-opacity: 1;
   background-color: rgba(
@@ -55,4 +47,18 @@
   background-position: 50%;
   background-size: 100% 100%;
   background-color: black;
+}
+
+.menu-link {
+  --cnvs-primary-menu-padding-y: 14px;
+  --cnvs-primary-menu-padding-x: 30px;
+  display: block;
+  line-height: 22px;
+  padding: var(--cnvs-primary-menu-padding-y) var(--cnvs-primary-menu-padding-x);
+  color: var(--cnvs-primary-menu-color);
+  font-weight: var(--cnvs-primary-menu-font-weight);
+  font-size: var(--cnvs-primary-menu-font-size);
+  font-family: var(--cnvs-primary-menu-font);
+  text-transform: var(--cnvs-primary-menu-tt);
+  letter-spacing: var(--cnvs-primary-menu-ls);
 }
