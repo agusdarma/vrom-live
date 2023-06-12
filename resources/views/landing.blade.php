@@ -65,7 +65,7 @@
               <p><b>{{ __('messages.landingText19') }}</b> {{ __('messages.landingText21') }}</p>
               <p>{{ __('messages.landingText22') }}</p>
               <p>{{ __('messages.landingText23') }}</p>    
-              <a href="{{ route('front.euro', $euro->slug) }}" class="text-black button button-3d button-large bg-hijau-stabilo">Learn more about Euro Swing Master</a>              
+              <a href="{{ route('front.euro', $euro->slug) }}" class="text-black button button-3d button-large bg-hijau-stabilo">{{ __('messages.landingText30') }}</a>              
             </div>
           </div>
           <div class="divider divider-right"><i class="bi-heart-fill"></i></div>
@@ -85,7 +85,7 @@
               <p>{{ __('messages.landingText27') }}</p>
               <p>{{ __('messages.landingText28') }}</p>
               
-              <a href="{{ route('front.pound','pound-swing-master-8kkbd') }}" class="text-black button button-3d button-large bg-primary">Learn more about Pound Swing Master</a>
+              <a href="{{ route('front.pound','pound-swing-master-8kkbd') }}" class="text-black button button-3d button-large bg-primary">{{ __('messages.landingText29') }}</a>
               
 
             </div>
