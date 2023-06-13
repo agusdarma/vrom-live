@@ -71,6 +71,7 @@ class StoreEuroTradesCommand extends Command
                     }                                                        
                 }   
             }
+            $sessionMyfxbooks = SessionMyfxbook::all();
             $sessionToken = null;
             foreach ($sessionMyfxbooks as $sess) {
                 // dd($sess->session);

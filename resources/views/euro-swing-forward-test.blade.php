@@ -48,7 +48,9 @@
                   <h3>Total Trade</h3>
                 </div>
                 <div class="pricing-price">
-                  {{ $summaryEuroTrades->total_trades }}X
+                  @isset($summaryEuroTrades->total_trades)
+                    {{ $summaryEuroTrades->total_trades }}X
+                  @endisset                  
                 </div>                
               </div>
         </div>
@@ -58,7 +60,10 @@
                   <h3>Probability</h3>
                 </div>
                 <div class="pricing-price">
-                  {{ $summaryEuroTrades->probability }}%
+                  @isset($summaryEuroTrades->probability)
+                    {{ $summaryEuroTrades->probability }}%
+                  @endisset                  
+                  
                 </div>                
               </div>
         </div>
@@ -67,8 +72,10 @@
                 <div class="bg-danger pricing-title text-uppercase title-sm">
                   <h3>Avg Risk Reward</h3>
                 </div>
-                <div class="pricing-price">
-                  1:{{ $summaryEuroTrades->risk_reward }}
+                <div class="pricing-price">                  
+                  @isset($summaryEuroTrades->risk_reward)
+                    1:{{ $summaryEuroTrades->risk_reward }}
+                  @endisset                  
                 </div>                
               </div>
         </div>
@@ -77,8 +84,10 @@
                 <div class="bg-info pricing-title text-uppercase title-sm">
                   <h3>Avg Holding Period</h3>
                 </div>
-                <div class="pricing-price">
+                <div class="pricing-price">                  
+                  @isset($summaryEuroTrades->holding_period)
                   {{ $summaryEuroTrades->holding_period }} Min
+                  @endisset  
                 </div>                
               </div>
         </div>
@@ -90,8 +99,10 @@
                 <div class="pricing-title text-uppercase title-sm bg-success-subtle">
                   <h3>Total Pips</h3>
                 </div>
-                <div class="pricing-price">
-                  {{ $summaryEuroTrades->total_pips }} Pips
+                <div class="pricing-price">                  
+                  @isset($summaryEuroTrades->total_pips)
+                    {{ $summaryEuroTrades->total_pips }} Pips
+                  @endisset  
                 </div>                
               </div>
         </div>
@@ -100,8 +111,10 @@
                 <div class="bg-primary-subtle pricing-title text-uppercase title-sm">
                   <h3>Avg Pips / Trade</h3>
                 </div>
-                <div class="pricing-price">
-                  {{ $summaryEuroTrades->avg_pips_trade }} Pips
+                <div class="pricing-price">                  
+                  @isset($summaryEuroTrades->avg_pips_trade)
+                    {{ $summaryEuroTrades->avg_pips_trade }} Pips
+                  @endisset 
                 </div>                
               </div>
         </div>
@@ -110,8 +123,10 @@
                 <div class="bg-secondary-subtle pricing-title text-uppercase title-sm">
                   <h3>Avg Pips / Month</h3>
                 </div>
-                <div class="pricing-price">
+                <div class="pricing-price">                  
+                  @isset($summaryEuroTrades->avg_pips_month)
                   {{ $summaryEuroTrades->avg_pips_month }} Pips
+                  @endisset
                 </div>                
               </div>
         </div>
@@ -120,8 +135,10 @@
                 <div class="bg-warning-subtle pricing-title text-uppercase title-sm">
                   <h3>Avg Pips / Year</h3>
                 </div>
-                <div class="pricing-price">
-                  {{ $summaryEuroTrades->avg_pips_year }} Pips
+                <div class="pricing-price">                  
+                  @isset($summaryEuroTrades->avg_pips_year)
+                    {{ $summaryEuroTrades->avg_pips_year }} Pips
+                  @endisset
                 </div>                
               </div>
         </div>
@@ -143,8 +160,10 @@
                 <div class="bg-success pricing-title text-uppercase title-sm">
                   <h3>Consecutive Profit</h3>
                 </div>
-                <div class="pricing-price">
-                  {{ $summaryEuroTrades->consecutive_profit }}x
+                <div class="pricing-price">                  
+                  @isset($summaryEuroTrades->consecutive_profit)
+                    {{ $summaryEuroTrades->consecutive_profit }}x
+                  @endisset
                 </div>                
               </div>
         </div>
@@ -153,8 +172,10 @@
                 <div class="bg-danger pricing-title text-uppercase title-sm">
                   <h3>Consecutive Loss</h3>
                 </div>
-                <div class="pricing-price">
-                  {{ $summaryEuroTrades->consecutive_loss }}x
+                <div class="pricing-price">                  
+                  @isset($summaryEuroTrades->consecutive_loss)
+                    {{ $summaryEuroTrades->consecutive_loss }}x
+                  @endisset
                 </div>                
               </div>
         </div>
