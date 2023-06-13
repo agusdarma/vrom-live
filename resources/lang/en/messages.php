@@ -111,7 +111,8 @@ return [
     'poundSwingMasterText31' => 'Rent Pound Swing Expert NOW!',
 
 
-
+    'euroForwardTestText1' => 'FORWARD TEST EURO SWING MASTER',
+    'euroForwardTestText2' => 'Trading History',
 
     
     

@@ -55,6 +55,9 @@
 
   <script type="text/javascript" src="{{url('/build/assets/sweetalert2.all.min.js')}}"></script>
 
+  <!-- If you need add custom script -->
+  {{ $headerScript ?? '' }}
+
   <!-- Styles -->
   @livewireStyles
 

@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\TypeController as AdminTypeController;
 use App\Http\Controllers\Admin\BrandController as AdminBrandController;
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashBoardController;
-
+use App\Http\Controllers\Front\EuroSwingForwardTestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +40,8 @@ Route::name('front.')->middleware(['setLocale']) ->group(function () {
     Route::get('/faqs', [FaqsController::class, 'index'])->name('faq');
     Route::get('/detail/{slug}', [DetailController::class, 'index'])->name('detail');
     Route::get('/payment/success', [PaymentController::class, 'success'])->name('payment.success');
+    Route::get('/euro-forward-test', [EuroSwingForwardTestController::class, 'index'])->name('euro.forwardTest.index');
+    // Route::get('/euro-forward-test/login', [EuroSwingForwardTestController::class, 'login'])->name('euro.forwardTest.login');
 
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/checkout/{slug}', [CheckoutController::class, 'index'])->name('checkout');

@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -66,4 +67,10 @@ class Kernel extends HttpKernel
         'isAdmin' => \App\Http\Middleware\IsAdmin::class,
         'setLocale' => \App\Http\Middleware\LanguageManager::class,
     ];
+
+    protected $commands = [
+        'App\Console\Commands\StoreEuroTradesCommand'
+      ];
+
+
 }
