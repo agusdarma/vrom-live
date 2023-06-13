@@ -32,7 +32,6 @@ class EuroSwingForwardTestController extends Controller
                     ->make(true);
         }
         $summaryEuroTrades = SummaryEuroTrades::where('name', '=', 'euro')->first();
-          
         return view('euro-swing-forward-test',
         ['summaryEuroTrades' => $summaryEuroTrades]);
     }
