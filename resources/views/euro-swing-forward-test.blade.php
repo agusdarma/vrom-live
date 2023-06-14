@@ -208,7 +208,19 @@
                       {data: 'tp_price', name: 'tp_price'},
                       {data: 'sl_price', name: 'sl_price'},
                       {data: 'pips', name: 'pips'},                      
-                      {data: 'result', name: 'result'},
+                      {
+                        data: 'result', 
+                        name: 'result', 
+                        createdCell: function (td, cellData, rowData, row, col) {
+                              if(cellData.toUpperCase() == 'SL') {
+                                $(td).css('background-color', 'LightCoral')
+                                $(td).css('color', 'white')
+                              }
+                              if(cellData.toUpperCase() == 'TP') {
+                                $(td).css('background-color', 'ForestGreen')
+                                $(td).css('color', 'white')
+                              }  
+                      }},
                       // {data: 'action', name: 'action', orderable: false, searchable: false},
                   ]
               });
