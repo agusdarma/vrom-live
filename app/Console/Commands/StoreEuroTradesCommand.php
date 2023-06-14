@@ -135,19 +135,19 @@ class StoreEuroTradesCommand extends Command
                                 $euroTrade->pips=$pips;
                                 $euroTrade->result=$result;
                                 $euroTrade->save();
-                                Log::info('openTime : {openTime}  ',['openTime' => $openTime]);
-                                Log::info('closeTime : {closeTime}  ',['closeTime' => $closeTime]);
-                                Log::info('symbol : {symbol}  ',['symbol' => $symbol]);
-                                Log::info('action : {action}  ',['action' => $action]);
-                                Log::info('openPrice : {openPrice}  ',['openPrice' => $openPrice]);
-                                Log::info('tpPrice : {tpPrice}  ',['tpPrice' => $tpPrice]);
-                                Log::info('slPrice : {slPrice}  ',['slPrice' => $slPrice]);
-                                Log::info('pips : {pips}  ',['pips' => $pips]);
-                                Log::info('result : {result}  ',['result' => $result]);
-                                Log::info('comment : {comment}  ',['comment' => $comment]);
-                                Log::info('---------------------------');
+                                // Log::info('openTime : {openTime}  ',['openTime' => $openTime]);
+                                // Log::info('closeTime : {closeTime}  ',['closeTime' => $closeTime]);
+                                // Log::info('symbol : {symbol}  ',['symbol' => $symbol]);
+                                // Log::info('action : {action}  ',['action' => $action]);
+                                // Log::info('openPrice : {openPrice}  ',['openPrice' => $openPrice]);
+                                // Log::info('tpPrice : {tpPrice}  ',['tpPrice' => $tpPrice]);
+                                // Log::info('slPrice : {slPrice}  ',['slPrice' => $slPrice]);
+                                // Log::info('pips : {pips}  ',['pips' => $pips]);
+                                // Log::info('result : {result}  ',['result' => $result]);
+                                // Log::info('comment : {comment}  ',['comment' => $comment]);
+                                // Log::info('---------------------------');
                             }else{
-                                Log::info('duplicate data, skipped');
+                                // Log::info('duplicate data, skipped');
                             }
 
 
@@ -166,12 +166,12 @@ class StoreEuroTradesCommand extends Command
                 
         // Calculate Total Trade
         $totalTrade = EuroTrades::all()->count();
-        Log::info('totalTrade : {totalTrade}',['totalTrade' => $totalTrade]);
+        // Log::info('totalTrade : {totalTrade}',['totalTrade' => $totalTrade]);
         $summaryEuroTrades->total_trades = $totalTrade;
         // Calculate Probability
         $tpCount = EuroTrades::where('result', '=', 'TP')->count();
         $probability = number_format((floatval($tpCount)/floatval($totalTrade)) * 100, 2) ;           
-        Log::info('probability : {probability}',['probability' => $probability]);
+        // Log::info('probability : {probability}',['probability' => $probability]);
         $summaryEuroTrades->probability = $probability;
         // Avg Risk Reward
         $euroTrades = EuroTrades::all();            
@@ -201,7 +201,7 @@ class StoreEuroTradesCommand extends Command
             
         }            
         $rrReal = number_format(floatval($rr) / floatval($countData), 2);
-        Log::info('Avg Risk Reward : {rrReal}',['rrReal' => $rrReal]);
+        // Log::info('Avg Risk Reward : {rrReal}',['rrReal' => $rrReal]);
         $summaryEuroTrades->risk_reward = $rrReal;
         // Avg Holding Period
         $countData = intval(0);
@@ -216,7 +216,7 @@ class StoreEuroTradesCommand extends Command
             $holdingPeriod = intval($holdingPeriod) + intval($totalDuration);
         }            
         $holdingPeriod = number_format(intval($holdingPeriod)/ intval($countData),0);
-        Log::info('Avg Holding Period : {holdingPeriod} Minutes',['holdingPeriod' => $holdingPeriod]);
+        // Log::info('Avg Holding Period : {holdingPeriod} Minutes',['holdingPeriod' => $holdingPeriod]);
         $summaryEuroTrades->holding_period = $holdingPeriod;
         // Total Pips
         $totalPips = floatval(0);
@@ -224,11 +224,11 @@ class StoreEuroTradesCommand extends Command
             $pips = $euroTrade->pips; 
             $totalPips = number_format($totalPips + floatval($pips),2);
         }
-        Log::info('Total Pips : {totalPips}',['totalPips' => $totalPips]); 
+        // Log::info('Total Pips : {totalPips}',['totalPips' => $totalPips]); 
         $summaryEuroTrades->total_pips = $totalPips;
         // AVG PIPS / TRADE  
         $avgPipsTrade = number_format($totalPips / $countData,2);
-        Log::info('AVG Pips / Trade : {avgPipsTrade}',['avgPipsTrade' => $avgPipsTrade]);   
+        // Log::info('AVG Pips / Trade : {avgPipsTrade}',['avgPipsTrade' => $avgPipsTrade]);   
         $summaryEuroTrades->avg_pips_trade = $avgPipsTrade;
         
         // AVG PIPS / Monthly
@@ -243,7 +243,7 @@ class StoreEuroTradesCommand extends Command
             $totalMonth = 1;
         }
         $avgPipsTradeMonthly = number_format($totalPips / $totalMonth,2);            
-        Log::info('AVG Pips / Monthly : {avgPipsTradeMonthly}',['avgPipsTradeMonthly' => $avgPipsTradeMonthly]);  
+        // Log::info('AVG Pips / Monthly : {avgPipsTradeMonthly}',['avgPipsTradeMonthly' => $avgPipsTradeMonthly]);  
         $summaryEuroTrades->avg_pips_month = $avgPipsTradeMonthly; 
         
         // AVG PIPS / Year
@@ -258,7 +258,7 @@ class StoreEuroTradesCommand extends Command
             $totalYear = 1;
         }
         $avgPipsTradeYear = number_format($totalPips / $totalYear,2);
-        Log::info('AVG Pips / Yearly : {avgPipsTradeYear}',['avgPipsTradeYear' => $avgPipsTradeYear]); 
+        // Log::info('AVG Pips / Yearly : {avgPipsTradeYear}',['avgPipsTradeYear' => $avgPipsTradeYear]); 
         $summaryEuroTrades->avg_pips_year = $avgPipsTradeYear; 
         // $summaryEuroTrades->save();
 

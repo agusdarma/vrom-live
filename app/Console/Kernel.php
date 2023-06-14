@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('store-euro-trades-command')
-        ->everyThirtyMinutes()
+        ->everyFiveMinutes()
         ->withoutOverlapping();        
     }
 
