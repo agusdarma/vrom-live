@@ -77,6 +77,7 @@ return [
     'euroSwingMasterText32' => 'Let the forward test data prove it.',
     'euroSwingMasterText33' => 'Good News!',
     'euroSwingMasterText34' => 'Rent Euro Swing Expert NOW!',
+    'euroSwingMasterText35' => 'Forward Test Result',
 
     'poundSwingMasterText1' => 'Pound Swing Master',
     'poundSwingMasterText2' => 'Pound Swing Master is a complete automated trading robot that has designed and create based on artificial intelligence ( AI ).',

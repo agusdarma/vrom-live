@@ -196,11 +196,12 @@
                         <div class="col-md-10">
                           <p class="mb-4 text-black text-uppercase fw-semibold ls-1 font-primary">{{ __('messages.euroSwingMasterText31') }}</p>
                           <h1 class="display-3 fw-normal" style="letter-spacing: -1px;">{{ __('messages.euroSwingMasterText32') }}</h1>
+                          <a href="{{ route('front.euro.forwardTest.index') }}" target="_blank" class="text-black button button-3d button-large bg-hijau-stabilo">{{ __('messages.euroSwingMasterText35') }}</a>
                           <div class="divider divider-right"><i class="bi-heart-fill"></i></div>                                                    
                         </div>
                       </div>
                       <!-- Slider -->
-                      <section id="slider" class="mt-5 slider-element revslider-wrap">
+                      {{-- <section id="slider" class="mt-5 slider-element revslider-wrap">
                         <div class="container">
 
                           <div id="rev_slider_4_1_wrapper" class="rev_slider_wrapper" data-alias="classicslider1" style="margin:0px auto;background-color:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">
@@ -814,7 +815,7 @@
                           </div><!-- END REVOLUTION SLIDER -->
 
                         </div>
-                      </section>
+                      </section> --}}
                       
                     </div>
                   </div>
