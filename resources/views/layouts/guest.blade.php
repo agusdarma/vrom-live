@@ -439,22 +439,22 @@
                   <a class="menu-link" href="/"><div>Home</div></a>
                 </li>
                 <li class="menu-item">
-                  <a class="menu-link" href="#"><div>Expert Advisor</div></a>                  
+                  <a class="menu-link" href="#"><div>Expert Advisor</div></a>
                   <ul class="sub-menu-container">
                     <li class="menu-item">
-                      <a class="menu-link" href="{{ route('front.euro','euro-swing-master-n2i8j') }}"><div>Euro Swing Master</div></a>
-                      <ul class="sub-menu-container">
-                        <li class="menu-item">
-                          <a class="menu-link" href="{{ route('front.euro.forwardTest.index') }}"><div>Forward Test</div></a>
-                        </li>
-                      </ul>
+                      <a class="menu-link" href="{{ route('front.euro','euro-swing-master-n2i8j') }}"><div>Euro Swing Master</div></a>                      
                     </li>
                     <li class="menu-item">                      
                       <a class="menu-link" href="{{ route('front.pound','pound-swing-master-8kkbd') }}"><div>Pound Swing Master</div></a>
+                    </li>                    
+                  </ul>
+                </li>    
+                <li class="menu-item">
+                  <a class="menu-link" href="#"><div>Forward Test</div></a>
+                  <ul class="sub-menu-container">
+                    <li class="menu-item">
+                      <a class="menu-link" href="{{ route('front.euro.forwardTest.index') }}"><div>Euro Swing Master</div></a>
                     </li>
-                    {{-- <li class="menu-item">
-                      <a class="menu-link" href="{{ route('front.golden','golden-trend-8kkbd') }}"><div>Golden Trend</div></a>
-                    </li> --}}
                   </ul>
                 </li>    
                 @auth                

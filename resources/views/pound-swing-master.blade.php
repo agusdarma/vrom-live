@@ -1,5 +1,5 @@
 <x-front-layout>  
-    
+      @section('title', 'Pound Swing Master Expert Advisor - Industry-leading Expert Advisors - TradingJourney.ID')    
               <div id="sini" class="text-center bg-white">                  
                   <div class="row col-mb-50">
                     <div class="p-6 col-md-5 d-inline-flex" style="min-height: 350px">
