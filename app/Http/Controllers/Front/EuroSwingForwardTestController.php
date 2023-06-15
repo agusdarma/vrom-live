@@ -32,6 +32,12 @@ class EuroSwingForwardTestController extends Controller
                     ->make(true);
         }
         $summaryEuroTrades = SummaryEuroTrades::where('name', '=', 'euro')->first();
+        // $mdY = convertYmdToMdy('2022-02-12');
+        // $ymd = convertMdyToYmd('02-12-2022');
+        // dd($mdY);
+        // logoutMyfxbook('agus');
+        // $session = loginMyfxbook('agusdk2011@gmail.com','r4H4s14181014');
+
         return view('euro-swing-forward-test',
         ['summaryEuroTrades' => $summaryEuroTrades]);
     }

@@ -38,86 +38,123 @@ class StoreEuroTradesCommand extends Command
         $controllerName = $this->getName();        
         Log::info('[{controllerName}] scheduler starting  ',['controllerName' => $controllerName]);
         
+
         // Scheduler Get Data Trading
         try{
-            // login untuk mendapatkan session            
+            // query ke db untuk cek apakah sudah pernah login atau belum, jika belum ada lakukan proses login jika sudah
+            // ada cek apakah session masih valid atau invalid engan query get account
             $sessionMyfxbooks = SessionMyfxbook::all();
-            if($sessionMyfxbooks->isEmpty()){                
-                $respSessionLogin = loginMyfxbook('agusdk2011@gmail.com','r4H4s14181014'); 
-                // dd($respSessionLogin); 
-                if($respSessionLogin != null){
-                    $sessionMyfxbookDb = SessionMyfxbook::where('session', '=', $respSessionLogin)->first();
-                    if($sessionMyfxbookDb == null){
-                        $sessionMyfxbook = new SessionMyfxbook();
-                        $sessionMyfxbook->session = $respSessionLogin;                    
-                        $sessionMyfxbook->save();   
+            if($sessionMyfxbooks->isEmpty()){
+                // belum pernah login, jadi lakukan proses login, jika berhasil simpan ke db sessionnya
+                $response = Http::get('https://www.myfxbook.com/api/login.json?', [
+                    'email' => 'agusdk2011@gmail.com',
+                    'password' => 'r4H4s14181014',
+                ]);                    
+                $clientRespon = $response->ok();                    
+                if($clientRespon){
+                    $body = $response->body(); 
+                    $respSessionLogin = $response->json('session');
+                    $respError = $response->json('error');
+                    $respMessage = $response->json('message');
+                    if(!$respError){
+                        $sessionMyfxbookDb = SessionMyfxbook::where('session', '=', $respSessionLogin)->first();
+                        if($sessionMyfxbookDb == null){
+                            $sessionMyfxbook = new SessionMyfxbook();
+                            $sessionMyfxbook->session = $respSessionLogin;                    
+                            $sessionMyfxbook->save();   
+                        }else{
+                            $sessionMyfxbookDb->session = $respSessionLogin;
+                            $sessionMyfxbookDb->save();   
+                        }                                    
                     }else{
-                        $sessionMyfxbookDb->session = $respSessionLogin;
-                        $sessionMyfxbookDb->save();   
-                    }
-                } 
-                 
+                        Log::error('Error message : {respMessage}  ',['respMessage' => $respMessage]);
+                    }                                                        
+                }   
             }
             $sessionMyfxbooks = SessionMyfxbook::all();
             $sessionToken = null;
             foreach ($sessionMyfxbooks as $sess) {
+                // dd($sess->session);
                 $sessionToken = $sess->session;
             }
-            if($sessionToken != null){        
-                $listHistory = getHistoryById($sessionToken,'10224975');
-                if($listHistory != null){
-                    foreach ($listHistory as $history) {                               
-                        $openTime = $history['openTime'];
-                        $closeTime = $history['closeTime'];
-                        $symbol = $history['symbol'];
-                        $action = $history['action'];
-                        $openPrice = $history['openPrice'];
-                        $tpPrice = $history['tp'];
-                        $slPrice = $history['sl'];
-                        $pips = $history['pips'];                                
-                        $comment = $history['comment'];                                
-                        $pipsFloat = floatval($pips);
-                        if($pipsFloat > 0){
-                            $result = "TP";
-                        }else{
-                            $result = "SL";
-                        }
-                        if($action == 'Deposit'||$action == 'Withdrawal'){
-                            continue;
-                        }    
-                            
-                        $word = "EURO SWING MASTER";
-                        $word2 = "EurUsd"; 
-                        if(strpos($comment, $word) == false){
-                            if(strpos($comment, $word2) == false){
+                
+                // setelah ada session langsung query trade history
+                $response = Http::retry(3, 100)->get('https://www.myfxbook.com/api/get-history.json?', [
+                    'session' => $sessionToken,
+                    'id' => '10224975',
+                ]);
+                $clientRespon = $response->ok();
+                if($clientRespon){                        
+                    $json = $response->json(); 
+                    $listHistory = $json['history'];
+                    $error = $json['error'];                        
+                    $message = $json['message'];
+                    if($error){
+                        Log::error('error get history : {message}  ',['message' => $message]);
+                    }else{
+                        foreach ($listHistory as $history) {                               
+                            $openTime = $history['openTime'];
+                            $closeTime = $history['closeTime'];
+                            $symbol = $history['symbol'];
+                            $action = $history['action'];
+                            $openPrice = $history['openPrice'];
+                            $tpPrice = $history['tp'];
+                            $slPrice = $history['sl'];
+                            $pips = $history['pips'];                                
+                            $comment = $history['comment'];                                
+                            $pipsFloat = floatval($pips);
+                            if($pipsFloat > 0){
+                                $result = "TP";
+                            }else{
+                                $result = "SL";
+                            }
+                            if($action == 'Deposit'||$action == 'Withdrawal'){
                                 continue;
-                            }                                    
-                        }                                                                                               
+                            }    
+                                
+                            $word = "EURO SWING MASTER";
+                            $word2 = "EurUsd"; 
+                            if(strpos($comment, $word) == false){
+                                if(strpos($comment, $word2) == false){
+                                    continue;
+                                }                                    
+                            }                                                                                               
 
-                        $euroTrade = EuroTrades::where('open_time', '=', $openTime)
-                        ->where('open_price', '=', $openPrice)->first();
-                        if($euroTrade == null){
-                            Log::info('new data found, inserting to db');
-                            $euroTrade = new EuroTrades();
-                            $euroTrade->open_time=$openTime;
-                            $euroTrade->close_time=$closeTime;
-                            $euroTrade->symbol=$symbol;
-                            $euroTrade->action=$action;
-                            $euroTrade->open_price=$openPrice;
-                            $euroTrade->tp_price=$tpPrice;
-                            $euroTrade->sl_price=$slPrice;
-                            $euroTrade->pips=$pips;
-                            $euroTrade->result=$result;
-                            $euroTrade->save();                            
-                        }else{
-                            // Log::info('duplicate data, skipped');
-                        }                        
-                    }
+                            $euroTrade = EuroTrades::where('open_time', '=', $openTime)
+                            ->where('open_price', '=', $openPrice)->first();
+                            if($euroTrade == null){
+                                Log::info('inserting db');
+                                $euroTrade = new EuroTrades();
+                                $euroTrade->open_time=$openTime;
+                                $euroTrade->close_time=$closeTime;
+                                $euroTrade->symbol=$symbol;
+                                $euroTrade->action=$action;
+                                $euroTrade->open_price=$openPrice;
+                                $euroTrade->tp_price=$tpPrice;
+                                $euroTrade->sl_price=$slPrice;
+                                $euroTrade->pips=$pips;
+                                $euroTrade->result=$result;
+                                $euroTrade->save();
+                                // Log::info('openTime : {openTime}  ',['openTime' => $openTime]);
+                                // Log::info('closeTime : {closeTime}  ',['closeTime' => $closeTime]);
+                                // Log::info('symbol : {symbol}  ',['symbol' => $symbol]);
+                                // Log::info('action : {action}  ',['action' => $action]);
+                                // Log::info('openPrice : {openPrice}  ',['openPrice' => $openPrice]);
+                                // Log::info('tpPrice : {tpPrice}  ',['tpPrice' => $tpPrice]);
+                                // Log::info('slPrice : {slPrice}  ',['slPrice' => $slPrice]);
+                                // Log::info('pips : {pips}  ',['pips' => $pips]);
+                                // Log::info('result : {result}  ',['result' => $result]);
+                                // Log::info('comment : {comment}  ',['comment' => $comment]);
+                                // Log::info('---------------------------');
+                            }else{
+                                // Log::info('duplicate data, skipped');
+                            }
+
+
+                            
+                        }
+                    }                                                                                                                                                    
                 }
-
-            }
-                
-                
                 
         SummaryEuroTrades::where('name', '=', 'euro')->delete();    
         $summaryEuroTrades = SummaryEuroTrades::where('name', '=', 'euro')->first();
