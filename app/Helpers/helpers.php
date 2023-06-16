@@ -35,11 +35,12 @@ use Illuminate\Support\Facades\Http;
  */
     function logoutMyfxbook($session)
     {   $howManyLoop = 5;
-        $counter = 1;                    
+        $counter = 1;      
+        $httpConnectTimeout = env('HTTP_CONNECT_TIMEOUT', 30);              
             while ($counter <= $howManyLoop) {
                 Log::info('Try logout : {counter} with session : {session}  ',['counter' => $counter, 'session' => $session]);
                 try{                                       
-                    $response = Http::get('https://www.myfxbook.com/api/logout.json?', [
+                    $response = Http::connectTimeout($httpConnectTimeout)->get('https://www.myfxbook.com/api/logout.json?', [
                         'session' => $session,
                     ]);  
                     if($response -> ok()){
@@ -70,7 +71,8 @@ use Illuminate\Support\Facades\Http;
 
     function loginMyfxbook($email,$password)
     {   $howManyLoop = 5;
-        $counter = 1;                    
+        $counter = 1;        
+        $httpConnectTimeout = env('HTTP_CONNECT_TIMEOUT', 30);            
             while ($counter <= $howManyLoop) {
                 Log::info('Try login : {counter} with email : {email} and password : {password}  ',
                 ['counter' => $counter,
@@ -78,7 +80,7 @@ use Illuminate\Support\Facades\Http;
                  'password' => $password,
                 ]);
                 try{                                       
-                    $response = Http::get('https://www.myfxbook.com/api/login.json?', [
+                    $response = Http::connectTimeout($httpConnectTimeout)->get('https://www.myfxbook.com/api/login.json?', [
                         'email' => $email,
                         'password' => $password,
                     ]);  
@@ -114,7 +116,8 @@ use Illuminate\Support\Facades\Http;
 
     function getHistoryById($session,$id)
     {   $howManyLoop = 5;
-        $counter = 1;                    
+        $counter = 1;      
+        $httpConnectTimeout = env('HTTP_CONNECT_TIMEOUT', 30);              
             while ($counter <= $howManyLoop) {
                 Log::info('Try getHistoryById : {counter} with session : {session} and id : {id}  ',
                 ['counter' => $counter,
@@ -122,7 +125,7 @@ use Illuminate\Support\Facades\Http;
                  'id' => $id,
                 ]);
                 try{                                       
-                    $response = Http::get('https://www.myfxbook.com/api/get-history.json?', [
+                    $response = Http::connectTimeout($httpConnectTimeout)->get('https://www.myfxbook.com/api/get-history.json?', [
                         'session' => $session,
                         'id' => $id,
                     ]);  
