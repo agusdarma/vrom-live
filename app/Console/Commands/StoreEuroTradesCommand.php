@@ -137,7 +137,8 @@ class StoreEuroTradesCommand extends Command
         // Log::info('probability : {probability}',['probability' => $probability]);
         $summaryEuroTrades->probability = $probability;
         // Avg Risk Reward
-        $euroTrades = EuroTrades::all();            
+        // di order supaya akurat untuk hitung consecutive profit dan loss
+        $euroTrades = EuroTrades::orderBy('close_time')->get();     
         $countData = intval(0);
         $rr = floatval(0);
         foreach ($euroTrades as $euroTrade) {
