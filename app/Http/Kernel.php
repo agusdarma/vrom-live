@@ -69,7 +69,8 @@ class Kernel extends HttpKernel
     ];
 
     protected $commands = [
-        'App\Console\Commands\StoreEuroTradesCommand'
+        'App\Console\Commands\StoreEuroTradesCommand',
+        'App\Console\Commands\StorePoundSwingTradesCommand'        
       ];
 
 
