@@ -115,6 +115,9 @@ return [
     'euroForwardTestText1' => 'FORWARD TEST EURO SWING MASTER',
     'euroForwardTestText2' => 'Trading History',
 
+    'poundForwardTestText1' => 'FORWARD TEST POUND SWING MASTER',
+    'poundForwardTestText2' => 'Trading History',
+
     
     
     

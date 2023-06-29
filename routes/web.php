@@ -13,12 +13,13 @@ use App\Http\Controllers\Front\EditProfileController;
 use App\Http\Controllers\Front\GoldenTrendController;
 use App\Http\Controllers\Front\EuroSwingMasterController;
 use App\Http\Controllers\Front\PoundSwingMasterController;
+use App\Http\Controllers\Front\EuroSwingForwardTestController;
+use App\Http\Controllers\Front\PoundSwingForwardTestController;
 use App\Http\Controllers\Admin\ItemController as AdminItemController;
 use App\Http\Controllers\Admin\TypeController as AdminTypeController;
 use App\Http\Controllers\Admin\BrandController as AdminBrandController;
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashBoardController;
-use App\Http\Controllers\Front\EuroSwingForwardTestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,7 @@ Route::name('front.')->middleware(['setLocale']) ->group(function () {
     Route::get('/detail/{slug}', [DetailController::class, 'index'])->name('detail');
     Route::get('/payment/success', [PaymentController::class, 'success'])->name('payment.success');
     Route::get('/euro/forward-test', [EuroSwingForwardTestController::class, 'index'])->name('euro.forwardTest.index');
+    Route::get('/pound/forward-test', [PoundSwingForwardTestController::class, 'index'])->name('pound.forwardTest.index');    
     // Route::get('/euro-forward-test/login', [EuroSwingForwardTestController::class, 'login'])->name('euro.forwardTest.login');
 
     Route::group(['middleware' => 'auth'], function () {

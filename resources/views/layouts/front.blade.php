@@ -490,6 +490,9 @@
                     <li class="menu-item">
                       <a class="menu-link" href="{{ route('front.euro.forwardTest.index') }}"><div>Euro Swing Master</div></a>
                     </li>
+                    <li class="menu-item">
+                      <a class="menu-link" href="{{ route('front.pound.forwardTest.index') }}"><div>Pound Swing Master</div></a>
+                    </li>
                   </ul>
                 </li>
                 @auth                
