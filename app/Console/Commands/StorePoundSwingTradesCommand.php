@@ -81,9 +81,12 @@ class StorePoundSwingTradesCommand extends Command
                             
                         $word = "POUNDS SWING MASTER";
                         $word2 = "GbpUsd"; 
+                        $word3 = "POUND SWING MASTER";
                         if(strpos($comment, $word) == false){
                             if(strpos($comment, $word2) == false){
-                                continue;
+                                if(strpos($comment, $word3) == false){
+                                    continue;
+                                }
                             }                                    
                         }                                                                                               
 
