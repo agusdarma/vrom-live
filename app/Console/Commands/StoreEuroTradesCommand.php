@@ -88,11 +88,13 @@ class StoreEuroTradesCommand extends Command
                             
                         $word = "EURO SWING MASTER";
                         $word2 = "EurUsd"; 
-                        if(strpos($comment, $word) == false){
-                            if(strpos($comment, $word2) == false){
+
+                        if(stripos($comment, $word) !== false){
+                            if(stripos($comment, $word2) !== false){                                
                                 continue;
-                            }                                    
-                        }                                                                                               
+                            }
+                        }
+                                                                                                                     
 
                         $euroTrade = EuroTrades::where('open_time', '=', $openTime)
                         ->where('open_price', '=', $openPrice)->first();
