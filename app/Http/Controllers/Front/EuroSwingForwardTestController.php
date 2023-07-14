@@ -28,6 +28,14 @@ class EuroSwingForwardTestController extends Controller
       
                     //         return $btn;
                     // })
+                    ->editColumn('open_time', function($data) {
+                        $openTimeFormatted = Carbon::parse($data->open_time)->toDateTimeString();                        
+                        return $openTimeFormatted;                        
+                    })
+                    ->editColumn('close_time', function($data) {
+                        $closeTimeFormatted = Carbon::parse($data->close_time)->toDateTimeString();                        
+                        return $closeTimeFormatted;                        
+                    })
                     ->rawColumns(['action'])
                     ->make(true);
         }
